@@ -1,8 +1,10 @@
-package com.example.honeybee;
+package com.example.honeybee.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.honeybee.R;
 
 public class MainActivity extends AppCompatActivity {
 
