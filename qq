@@ -1,0 +1,97 @@
+[33mcommit 07558f222ec8bb42297fe6d81c255f2c694a700e[m[33m ([m[1;36mHEAD -> [m[1;32mrecommendation_system[m[33m)[m
+Author: YoungjuNa-KR <apercent1@naver.com>
+Date:   Fri Dec 31 01:13:55 2021 +0900
+
+    first commit
+
+[33mcommit a5f5a7e32cae90fa9feefabc99752cddb9b45994[m
+Author: YoungjuNa-KR <apercent1@naver.com>
+Date:   Fri Dec 31 00:39:47 2021 +0900
+
+    Unsupervised Learning with OKCupid Dataset first commit
+
+[33mcommit aa702a2ee10eaa6d0d2d0eb64995790004f07c0c[m[33m ([m[1;31morigin/recommendation_system[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: b58055e f52fc82
+Author: sangyeop <78407939+saint6839@users.noreply.github.com>
+Date:   Tue Dec 28 01:15:27 2021 +0900
+
+    Merge pull request #8 from JNU-econovation/Android
+    
+    Android
+
+[33mcommit f52fc8245681ce50ec5cffc7a73a4d5be9336685[m
+Author: saint6839 <saint6839@gmail.com>
+Date:   Tue Dec 28 01:08:24 2021 +0900
+
+    add: directory struct
+
+[33mcommit da637bca1336051a1f3d093f2cee9bbaaff84f9a[m
+Merge: 206795b 5e05da7
+Author: saint6839 <saint6839@gmail.com>
+Date:   Tue Dec 28 01:03:52 2021 +0900
+
+    Merge remote-tracking branch 'origin/Android' into Android
+    
+    # Conflicts:
+    #       Honeybee/.idea/vcs.xml
+    #       Honeybee/.idea/workspace.xml
+
+[33mcommit 206795bf2ddf5c30e441411b187b88cfbe217007[m
+Author: saint6839 <saint6839@gmail.com>
+Date:   Tue Dec 28 01:02:58 2021 +0900
+
+    add: directory structure add
+
+[33mcommit 5e05da7081d9208188cb552aaa836fd4b4e39c95[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:13:52 2021 +0900
+
+    chores
+
+[33mcommit b58055e0a2c42717d28c7ef8832df08ab3a2c2e2[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:12:45 2021 +0900
+
+    chors
+
+[33mcommit bba5cc11232750053edc9fcafa97794cb7731e4c[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:12:07 2021 +0900
+
+    add : .gitignore
+
+[33mcommit b1b8617b432f71f066bbf7475a954963d1245b7c[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:09:02 2021 +0900
+
+    changes
+
+[33mcommit cdb7fd7d89e870fc1c4b7a2cd90fe7489eebd7b2[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:07:14 2021 +0900
+
+    add: .gitignore
+
+[33mcommit 45e80b124ff058029a07407b85de823079107518[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Sat Nov 20 23:03:44 2021 +0900
+
+    retrofit, 인터넷 연결 추가
+
+[33mcommit af09d3911aed3e26e305395f6072fc345a3485c7[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Thu Nov 11 22:26:30 2021 +0900
+
+    add : android project
+
+[33mcommit d2c15effaa9a1eb35be688bff4eeea2fccb177d5[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Thu Nov 11 22:18:59 2021 +0900
+
+    initial commit
+
+[33mcommit 6009444d5e5d067b9021c4b8e32e07b55e744b3e[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: mywnajsldkf <mywnajsldkf@gmail.com>
+Date:   Tue Oct 26 23:00:15 2021 +0900
+
+    first commit
