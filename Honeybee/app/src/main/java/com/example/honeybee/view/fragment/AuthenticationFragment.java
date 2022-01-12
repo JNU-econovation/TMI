@@ -1,8 +1,10 @@
 package com.example.honeybee.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.honeybee.R;
 import com.example.honeybee.view.activity.AuthenticationActivity;
+import com.example.honeybee.view.activity.RegisterActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,16 +40,15 @@ public class AuthenticationFragment extends Fragment {
 
 
         button.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
 
                 authKey = getArguments().getString("authKey");
 
-
-                System.out.println("auth에서 입력한 값"+authNumber.getText().toString());
-                System.out.println("생성된 인증 번호"+authKey);
                 if (authNumber.getText().toString().equals(authKey)){
+                    Intent intent = new Intent(view.getContext(), RegisterActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    view.getContext().startActivity(intent);
                     System.out.println("인증되었습니다.");
                 }
                 else {
