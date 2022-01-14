@@ -1,5 +1,6 @@
-package com.example.honeybee.view;
+package com.example.honeybee.view.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,19 @@ import android.view.ViewGroup;
 
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
+import com.example.honeybee.model.FeedContent;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
+import com.example.honeybee.view.NetRetrofit;
+import com.example.honeybee.view.adapter.MainPageAdapter;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class FeedFragment extends Fragment implements FeedContract.View{
-    private static final String TAG = "EmptyFragment.class";
+    private static final String TAG = "FeedFragment.class";
     private ViewPager2 pager;
     private MainPageAdapter pagerAdapter;
     private FeedContract.Presenter presenter;
@@ -48,6 +57,22 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         acitvateFeedPager(view);
+
+//        Call<FeedContent> userFeedInfo = NetRetrofit.getInstance().getRetrofitService().getDatas("userId");
+//        userFeedInfo.enqueue(new Callback<FeedContent>() {
+//            @Override
+//            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
+//                Log.d(TAG, "성공");
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<FeedContent> call, Throwable t) {
+//                Log.d(TAG, "실패");
+//            }
+//        });
+
+
         return view;
     }
 
@@ -101,6 +126,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                     //아래로 스크롤 할때마다 동적으로 아래 페이지가 생성
                     presenter.setFragment(FeedContentFragment.newInstance());
                     pager.setCurrentItem(position);
+
                 }
             }
 
@@ -116,6 +142,11 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         Log.d(TAG, "addFragment() 호출" + fragment.toString());
         pagerAdapter.addItem(fragment);
         pagerAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void moveActivity(Activity activity) {
+
     }
 
 }

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Honeybee</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="page_title">HoneyBe</string>
+    <string name="personality1">신중한</string>
+    <string name="personality2">뮤지컬</string>
+    <string name="personality3">여행</string>
+    <string name="personality4">시원시원한</string>
+    <string name="personality5">음악</string>
+    <string name="personality6">즉흥적인</string>
+    <string name="personality7">피아노를 좋아하는</string>
 </resources>

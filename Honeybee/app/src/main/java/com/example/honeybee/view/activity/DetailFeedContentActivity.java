@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.honeybee.R;
+
 public class DetailFeedContentActivity extends AppCompatActivity {
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.honeybee.view;
+package com.example.honeybee.view.fragment;
 
 import android.os.Bundle;
 
