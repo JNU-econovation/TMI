@@ -38,31 +38,41 @@ public class MainActivity extends AppCompatActivity {
 
         activateBottomNavigationView();
 
-        testRetrofit();
+//        testGetMappingRetrofit();
+        testPostMappingRetrofit();
     }
 
-    private void testRetrofit() {
-
-//        ArrayList<String> lists = new ArrayList<>();
-//        lists.add("활발함");
-//        lists.add("소심함");
-//        lists.add("과묵함");
-
-//        FeedContent feedContent = FeedContent.builder()
-//                .profile("profile")
-//                .name("name")
-//                .age(20)
-//                .score(75)
-//                .personalities(lists)
-//                .introduce("introduce")
-//                .build();
-
-//        Gson gson = new Gson();
-//        String objJson = gson.toJson(feedContent);
-
-
-        Call<FeedContent> getData = NetRetrofit.getInstance().getRetrofitService().getDatas("id");
+    private void testGetMappingRetrofit() {
+        Call<FeedContent> getData = NetRetrofit.getInstance().getRetrofitService().getDatas(1L);
         getData.enqueue(new Callback<FeedContent>() {
+            @Override
+            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
+
+                FeedContent feedContent = response.body();
+                Log.d(TAG, feedContent.getIntroduce());
+            }
+
+            @Override
+            public void onFailure(Call<FeedContent> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
+    }
+
+    private void testPostMappingRetrofit() {
+        String[] personalities = {"활발함", "성실함", "정직함"};
+
+        FeedContent feedContent = FeedContent.builder()
+                .profile("testProfile")
+                .name("ChaeSangYeop")
+                .age(25)
+                .score(80)
+                .personalities(personalities)
+                .introduce("this is test introduce message")
+                .build();
+
+        Call<FeedContent> postsData = NetRetrofit.getInstance().getRetrofitService().postDatas(feedContent);
+        postsData.enqueue(new Callback<FeedContent>() {
             @Override
             public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
                 String[] personalities = response.body().getPersonalities();
@@ -78,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void activateBottomNavigationView() {
         getSupportFragmentManager()
