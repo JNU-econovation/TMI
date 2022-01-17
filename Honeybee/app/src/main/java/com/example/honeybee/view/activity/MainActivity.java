@@ -1,8 +1,10 @@
 package com.example.honeybee.view.activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -37,24 +41,28 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         activateBottomNavigationView();
+        getDataWithfindById();
+
 
 //        testGetMappingRetrofit();
-        testPostMappingRetrofit();
+//        testPostMappingRetrofit();
     }
 
-    private void testGetMappingRetrofit() {
-        Call<FeedContent> getData = NetRetrofit.getInstance().getRetrofitService().getDatas(1L);
-        getData.enqueue(new Callback<FeedContent>() {
+    private void getDataWithfindById() {
+
+        // 테스트로 사용할 id = 61e02da1283b566ada5fc98e
+        String id = "61e3f0c2aa45187a63ab63bf";
+        Call<FeedContent> data = NetRetrofit.getInstance().getRetrofitService().findById(id);
+        data.enqueue(new Callback<FeedContent>() {
             @Override
             public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
-
-                FeedContent feedContent = response.body();
-                Log.d(TAG, feedContent.getIntroduce());
+                FeedContent body = response.body();
+                Log.d(TAG, body.getIntroduce());
             }
 
             @Override
             public void onFailure(Call<FeedContent> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
+
             }
         });
     }

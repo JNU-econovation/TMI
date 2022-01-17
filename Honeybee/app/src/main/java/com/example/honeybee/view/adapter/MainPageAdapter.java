@@ -1,6 +1,8 @@
 package com.example.honeybee.view.adapter;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -8,6 +10,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.adapter.FragmentViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +37,35 @@ public class MainPageAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         Log.d(TAG, "position : " + position);
+//        for (Fragment fragment : list) {
+//            Log.d(TAG, "Fragment List = " + fragment);
+//        }
         return list.get(position);
     }
+
 
     @Override
     public int getItemCount() {
         return list.size();
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull FragmentViewHolder holder, int position, @NonNull List<Object> payloads) {
+        super.onBindViewHolder(holder, position, payloads);
+        Log.d(TAG, holder.itemView.toString());
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Log.d(TAG, "AdapterPosition= " + holder.getAdapterPosition());
+//
+//            }
+//        });
+
+    }
+
+
     public void addItem(Fragment fragment) {
         Log.d(TAG, "addItem() 호출" + fragment.toString());
         list.add(fragment);
     }
-
 }

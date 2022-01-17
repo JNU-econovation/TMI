@@ -1,6 +1,7 @@
 package com.example.honeybee.view.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.example.honeybee.contract.FeedContract;
 import com.example.honeybee.model.FeedContent;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
 import com.example.honeybee.view.NetRetrofit;
+import com.example.honeybee.view.activity.DetailFeedContentActivity;
 import com.example.honeybee.view.adapter.MainPageAdapter;
 
 import okhttp3.ResponseBody;
@@ -33,6 +35,8 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private ViewPager2 pager;
     private MainPageAdapter pagerAdapter;
     private FeedContract.Presenter presenter;
+
+    private DetailFeedContentActivity detailFeedContentActivity;
 
     private FeedFragment() {
     }
@@ -57,6 +61,8 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         acitvateFeedPager(view);
+
+
 
 //        Call<FeedContent> userFeedInfo = NetRetrofit.getInstance().getRetrofitService().getDatas("userId");
 //        userFeedInfo.enqueue(new Callback<FeedContent>() {
@@ -133,6 +139,14 @@ public class FeedFragment extends Fragment implements FeedContract.View{
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                Log.d(TAG, "onPageSelected 호출 = " + position);
+            }
+        });
+
+        pager.post(new Runnable() {
+            @Override
+            public void run() {
+                pagerAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -141,12 +155,11 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public void addFragment(Fragment fragment) {
         Log.d(TAG, "addFragment() 호출" + fragment.toString());
         pagerAdapter.addItem(fragment);
-        pagerAdapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void moveActivity(Activity activity) {
-
     }
 
 }
