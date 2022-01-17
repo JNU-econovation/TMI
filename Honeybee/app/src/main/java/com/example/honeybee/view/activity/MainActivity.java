@@ -67,38 +67,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void testPostMappingRetrofit() {
-        String[] personalities = {"활발함", "성실함", "정직함"};
-
-        FeedContent feedContent = FeedContent.builder()
-                .profile("testProfile")
-                .name("ChaeSangYeop")
-                .age(25)
-                .score(80)
-                .personalities(personalities)
-                .introduce("this is test introduce message")
-                .build();
-
-        Call<FeedContent> postsData = NetRetrofit.getInstance().getRetrofitService().postDatas(feedContent);
-        postsData.enqueue(new Callback<FeedContent>() {
-            @Override
-            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
-                String[] personalities = response.body().getPersonalities();
-                Log.d(TAG, personalities[0]);
-                Log.d(TAG, personalities[1]);
-                Log.d(TAG, personalities[2]);
-                Log.d(TAG, response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<FeedContent> call, Throwable t) {
-                Log.d(TAG, t.getMessage());
-            }
-        });
-    }
-
-
-
     private void activateBottomNavigationView() {
         getSupportFragmentManager()
                 .beginTransaction()

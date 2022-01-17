@@ -15,5 +15,7 @@ public interface FeedContract {
         void setFragment(Fragment fragment);
 
         void setActivity(Activity activity);
+
+
     }
 }

@@ -23,9 +23,14 @@ public interface RetrofitService {
     @GET("users/{id}")
     Call<FeedContent> findById(@Path("id") String id);
 
+    @GET("users")
+    Call<List<FeedContent>> findAll();
+
     @POST("users")
     Call<FeedContent> postDatas(@Body FeedContent feedContent);
 
-    @GET("users/{id}/like")
+    @POST("users/{id}/like")
     Call<LikeUserDto> getLikeUser(@Path("id") String id);
+
+
 }

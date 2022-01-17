@@ -24,6 +24,8 @@ import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
 import com.example.honeybee.view.adapter.MainPageAdapter;
 
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +39,15 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private FeedContract.Presenter presenter;
 
     private DetailFeedContentActivity detailFeedContentActivity;
+
+    private List<FeedContent> allFeedContent;
+
+    private String profileUrl;
+    private String name;
+    private int age;
+    private int score;
+    private String[] personalities;
+    private String introduce;
 
     private FeedFragment() {
     }
@@ -60,29 +71,45 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
+        Log.d(TAG, "onCreateView 호출");
+
         acitvateFeedPager(view);
 
 
 
-//        Call<FeedContent> userFeedInfo = NetRetrofit.getInstance().getRetrofitService().getDatas("userId");
-//        userFeedInfo.enqueue(new Callback<FeedContent>() {
-//            @Override
-//            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
-//                Log.d(TAG, "성공");
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<FeedContent> call, Throwable t) {
-//                Log.d(TAG, "실패");
-//            }
-//        });
-
-
         return view;
     }
-
     public void acitvateFeedPager(View view) {
+        presenter = new FeedContentPresenterImpl(this);
+
+        Call<List<FeedContent>> listCall = NetRetrofit.retrofitService.findAll();
+        listCall.enqueue(new Callback<List<FeedContent>>() {
+            @Override
+            public void onResponse(Call<List<FeedContent>> call, Response<List<FeedContent>> response) {
+                allFeedContent = response.body();
+                for (FeedContent feedContent : allFeedContent) {
+                    Log.d(TAG, "allFeedContent = " + allFeedContent);
+                }
+
+                for (FeedContent feedContent : allFeedContent) {
+                    profileUrl = feedContent.getProfile();
+                    name = feedContent.getName();
+                    age = feedContent.getAge();
+                    score = feedContent.getScore();
+                    personalities = feedContent.getPersonalities();
+                    introduce = feedContent.getIntroduce();
+
+                    presenter.setFragment(FeedContentFragment.newInstance(
+                            profileUrl, name, age, score, personalities, introduce));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<FeedContent>> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
+            }
+        });
+
         pager = view.findViewById(R.id.viewPager);
         pagerAdapter = new MainPageAdapter(getChildFragmentManager(), new Lifecycle() {
             @Override
@@ -95,9 +122,6 @@ public class FeedFragment extends Fragment implements FeedContract.View{
             @Override
             public State getCurrentState() { return null; }
         });
-
-        presenter = new FeedContentPresenterImpl(this);
-        presenter.setFragment(FeedContentFragment.newInstance());
 
         pager.setAdapter(pagerAdapter);
         pager.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
@@ -123,16 +147,15 @@ public class FeedFragment extends Fragment implements FeedContract.View{
             }
         });
 
+
+        // 페이지 선택, 스크롤에 해당하는 이벤트
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 if (positionOffsetPixels == 0) {
                     Log.d(TAG, "onPageScrolled() 호출");
 
-                    //아래로 스크롤 할때마다 동적으로 아래 페이지가 생성
-                    presenter.setFragment(FeedContentFragment.newInstance());
                     pager.setCurrentItem(position);
-
                 }
             }
 

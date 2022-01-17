@@ -51,13 +51,22 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
-    public FeedContentFragment() {
+    public static FeedContentFragment newInstance(String profileUrl,
+                                                  String name,
+                                                  int age,
+                                                  int score,
+                                                  String[] personalities,
+                                                  String introduce) {
 
-    }
 
-    public static FeedContentFragment newInstance() {
         FeedContentFragment fragment = new FeedContentFragment();
         Bundle args = new Bundle();
+        args.putString("profileUrl", profileUrl);
+        args.putString("name", name);
+        args.putInt("age", age);
+        args.putInt("score", score);
+        args.putStringArray("personalities", personalities);
+        args.putString("introduce", introduce);
         fragment.setArguments(args);
         return fragment;
     }
@@ -66,54 +75,46 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed_content, container, false);
         init(view);                         // view.findViewById();
-        getFeedContentFromServer();
+//        getFeedContentFromServer();         // 서버로부터 피드 받아와서 뿌려줌
         lookInfoDetail(view);               // 상세정보
-
+        setFeedContentData();               // feedContentFragment 생성될 때, Bundle로 넘어오는 값을 Fragment에 띄워줌
 
         return view;
+    }
+
+    private void setFeedContentData() {
+        profileUrl = getArguments().getString("profileUrl");
+        name = getArguments().getString("name");
+        age = getArguments().getInt("age");
+        score = getArguments().getInt("score");
+        personalities = getArguments().getStringArray("personalities");
+        introduce = getArguments().getString("introduce");
+
+        FeedContent feedContent = FeedContent.builder()
+                .profile(profileUrl)
+                .name(name)
+                .age(age)
+                .score(score)
+                .personalities(personalities)
+                .introduce(introduce)
+                .build();
+
+        iv_profile.setImageResource(R.drawable.img_maenji);
+        tv_name.setText(feedContent.getName());
+        tv_age.setText(String.valueOf(feedContent.getAge()));
+        tv_score.setText(String.valueOf(feedContent.getAge()));
+        tv_personality1.setText(feedContent.getPersonalities()[0]);
+        tv_personality2.setText(feedContent.getPersonalities()[1]);
+        tv_personality3.setText(feedContent.getPersonalities()[2]);
+        tv_personality4.setText(feedContent.getPersonalities()[3]);
+        tv_introduce.setText(feedContent.getIntroduce());
+
     }
 
     public void addToLikeList() {
         iv_likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-            }
-        });
-    }
-
-    private void getFeedContentFromServer() {
-
-        String id = "61e3f0c2aa45187a63ab63bf";
-        Call<FeedContent> data = NetRetrofit.getInstance().getRetrofitService().findById(id);
-        data.enqueue(new Callback<FeedContent>() {
-            @Override
-            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
-                profileUrl = response.body().getProfile();
-                name = response.body().getName();
-                age = response.body().getAge();
-                score = response.body().getScore();
-                personalities = response.body().getPersonalities();
-                introduce = response.body().getIntroduce();
-
-                for (String personality : personalities) {
-                    Log.d(TAG, "personalities = " + personality);
-                }
-
-//                Glide.with(getContext()).load(profileUrl).into(iv_profile);
-                iv_profile.setImageResource(R.drawable.img_maenji);
-                tv_name.setText(name);
-                tv_age.setText(String.valueOf(age));
-                tv_score.setText(String.valueOf(score));
-                tv_personality1.setText(personalities[0]);
-                tv_personality2.setText(personalities[1]);
-                tv_personality3.setText(personalities[2]);
-                tv_personality4.setText(personalities[3]);
-                tv_introduce.setText(introduce);
-            }
-
-            @Override
-            public void onFailure(Call<FeedContent> call, Throwable t) {
 
             }
         });
@@ -168,6 +169,8 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         });
     }
 
+
+    // 찜 목록에 추가하는 메소
     public void addUserIntoLikeList(View view) {
         iv_likeButton = view.findViewById(R.id.iv_likeButton);
         iv_likeButton.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +181,6 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
                 likeUserDtoCall.enqueue(new Callback<LikeUserDto>() {
                     @Override
                     public void onResponse(Call<LikeUserDto> call, Response<LikeUserDto> response) {
-
                     }
 
                     @Override
