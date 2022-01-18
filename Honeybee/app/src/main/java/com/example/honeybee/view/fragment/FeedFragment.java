@@ -1,7 +1,6 @@
 package com.example.honeybee.view.fragment;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,7 +17,8 @@ import android.view.ViewGroup;
 
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
-import com.example.honeybee.model.FeedContent;
+import com.example.honeybee.model.TmiData;
+import com.example.honeybee.model.dto.FeedContentDto;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
@@ -26,7 +26,6 @@ import com.example.honeybee.view.adapter.MainPageAdapter;
 
 import java.util.List;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,15 +39,13 @@ public class FeedFragment extends Fragment implements FeedContract.View{
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
-    private List<FeedContent> allFeedContent;
+    private List<TmiData> allTmiData;
 
-    private String profileUrl;
-    private String name;
-    private int age;
-    private int score;
-    private String[] personalities;
+    private String[] user_image;
+    private String nickname;
+    private Integer age;
+    private String[] personality;
     private String introduce;
-    private String[] userId;
 
     private FeedFragment() {
     }
@@ -82,31 +79,30 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public void acitvateFeedPager(View view) {
         presenter = new FeedContentPresenterImpl(this);
 
-        Call<List<FeedContent>> listCall = NetRetrofit.retrofitService.findAll();
-        listCall.enqueue(new Callback<List<FeedContent>>() {
+        Call<List<TmiData>> listCall = NetRetrofit.retrofitService.findAll();
+        listCall.enqueue(new Callback<List<TmiData>>() {
+
             @Override
-            public void onResponse(Call<List<FeedContent>> call, Response<List<FeedContent>> response) {
-                allFeedContent = response.body();
-                for (FeedContent feedContent : allFeedContent) {
-                    Log.d(TAG, "allFeedContent = " + allFeedContent);
+            public void onResponse(Call<List<TmiData>> call, Response<List<TmiData>> response) {
+                List<TmiData> tmiDatas = response.body();
+                for (TmiData data : tmiDatas) {
+                    Log.d(TAG, "tmiData = " + data);
                 }
 
-                for (FeedContent feedContent : allFeedContent) {
-                    profileUrl = feedContent.getProfile();
-                    name = feedContent.getName();
-                    age = feedContent.getAge();
-                    score = feedContent.getScore();
-                    personalities = feedContent.getPersonalities();
-                    introduce = feedContent.getIntroduce();
-                    userId = feedContent.getUserId();
+                for (TmiData tmiData : tmiDatas) {
+                    user_image = tmiData.getUser_image();
+                    nickname = tmiData.getNickname();
+                    age = tmiData.getAge();
+                    personality = tmiData.getPersonality();
+                    introduce = tmiData.getIntroduce();
 
                     presenter.setFragment(FeedContentFragment.newInstance(
-                            profileUrl, name, age, score, personalities, introduce, userId));
+                            user_image, nickname, age, personality, introduce));
                 }
             }
 
             @Override
-            public void onFailure(Call<List<FeedContent>> call, Throwable t) {
+            public void onFailure(Call<List<TmiData>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
             }
         });
@@ -147,7 +143,6 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                 page.setTranslationY(position * -offsetPx);
             }
         });
-
 
         // 페이지 선택, 스크롤에 해당하는 이벤트
         pager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

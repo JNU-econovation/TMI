@@ -1,32 +1,22 @@
 package com.example.honeybee.view.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import com.example.honeybee.R;
-import com.example.honeybee.model.FeedContent;
+import com.example.honeybee.model.TmiData;
+import com.example.honeybee.model.dto.FeedContentDto;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.fragment.ChatFragment;
 import com.example.honeybee.view.fragment.FeedFragment;
 import com.example.honeybee.view.fragment.ProfileFragment;
 import com.example.honeybee.view.fragment.WishFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.Gson;
 
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,17 +41,17 @@ public class MainActivity extends AppCompatActivity {
     private void getDataWithfindById() {
 
         // 테스트로 사용할 id = 61e02da1283b566ada5fc98e
-        String id = "61e3f0c2aa45187a63ab63bf";
-        Call<FeedContent> data = NetRetrofit.getInstance().getRetrofitService().findById(id);
-        data.enqueue(new Callback<FeedContent>() {
+        String id = "61e65e6e5ba69d47c16c411e";
+        Call<TmiData> data = NetRetrofit.getInstance().getRetrofitService().findById(id);
+        data.enqueue(new Callback<TmiData>() {
             @Override
-            public void onResponse(Call<FeedContent> call, Response<FeedContent> response) {
-                FeedContent body = response.body();
+            public void onResponse(Call<TmiData> call, Response<TmiData> response) {
+                TmiData body = response.body();
                 Log.d(TAG, body.getIntroduce());
             }
 
             @Override
-            public void onFailure(Call<FeedContent> call, Throwable t) {
+            public void onFailure(Call<TmiData> call, Throwable t) {
 
             }
         });

@@ -33,10 +33,9 @@ public class DetailFeedContentActivity extends AppCompatActivity {
     private TextView tv_height;
 
 
-    private String profileUrl;
-    private String name;
+    private String[] user_image;
+    private String nickname;
     private int age;
-    private int score;
     private String personality1;
     private String personality2;
     private String personality3;
@@ -80,10 +79,9 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        profileUrl = intent.getStringExtra("profile");
-        name = intent.getStringExtra("name");
+        user_image = intent.getStringArrayExtra("user_image");
+        nickname = intent.getStringExtra("nickname");
         age = intent.getIntExtra("age",0);
-        score = intent.getIntExtra("score", 0);
         personality1 = intent.getStringExtra("personality1");
         personality2 = intent.getStringExtra("personality2");
         personality3 = intent.getStringExtra("personality3");
@@ -91,30 +89,17 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         personality5 = intent.getStringExtra("personality5");
         personality6 = intent.getStringExtra("personality6");
         personality7 = intent.getStringExtra("personality7");
+        introduce = intent.getStringExtra("introduce");
     }
-    //    private ImageView iv_profile;
-    //    private TextView tv_name;
-    //    private TextView tv_age;
-    //    private ImageView iv_likeButton;
-    //    private ImageView iv_chat;
-    //    private TextView tv_college;
-    //    private TextView tv_location;
-    //    private TextView tv_mbti;
-    //    private TextView tv_personality1;
-    //    private TextView tv_personality2;
-    //    private TextView tv_personality3;
-    //    private TextView tv_personality4;
-    //    private TextView tv_personality5;
-    //    private TextView tv_personality6;
-    //    private TextView tv_personality7;
-    //    private TextView tv_introduce;
-    //    private TextView tv_smoking;
-    //    private TextView tv_height;
 
     public void getFeedData() {
+        /**
+         * 이미지는 이 자리에 Glide로 처리해주면 됨
+         */
 //        Glide.with(getBaseContext()).load(profileUrl).into(iv_profile);
         iv_profile.setImageResource(R.drawable.img_maenji);
-        tv_name.setText(name);
+
+        tv_name.setText(nickname);
         tv_age.setText(String.valueOf(age));
         tv_college.setText("산업공학과");
         tv_location.setText("5km");
