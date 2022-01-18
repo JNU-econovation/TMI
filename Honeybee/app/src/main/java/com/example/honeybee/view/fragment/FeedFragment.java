@@ -60,7 +60,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         return fragment;
     }
 
-    @Override
+    @Override1
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
