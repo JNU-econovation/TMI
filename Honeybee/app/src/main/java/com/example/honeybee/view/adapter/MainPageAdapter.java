@@ -37,9 +37,6 @@ public class MainPageAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         Log.d(TAG, "position : " + position);
-//        for (Fragment fragment : list) {
-//            Log.d(TAG, "Fragment List = " + fragment);
-//        }
         return list.get(position);
     }
 
@@ -53,14 +50,6 @@ public class MainPageAdapter extends FragmentStateAdapter {
     public void onBindViewHolder(@NonNull FragmentViewHolder holder, int position, @NonNull List<Object> payloads) {
         super.onBindViewHolder(holder, position, payloads);
         Log.d(TAG, holder.itemView.toString());
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(TAG, "AdapterPosition= " + holder.getAdapterPosition());
-//
-//            }
-//        });
-
     }
 
 

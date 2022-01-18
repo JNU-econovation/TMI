@@ -34,14 +34,18 @@ public class FeedContent {
     @SerializedName("introduce")
     private String introduce;
 
+    @SerializedName("userId")
+    private String[] userId;
+
     @Builder
-    public FeedContent(String profile, String name, int age, int score, String[] personalities, String introduce) {
+    public FeedContent(String profile, String name, int age, int score, String[] personalities, String introduce, String[] userId) {
         this.profile = profile;
         this.name = name;
         this.age = age;
         this.score = score;
         this.personalities = personalities;
         this.introduce = introduce;
+        this.userId = userId;
     }
 
     @Override
@@ -51,8 +55,9 @@ public class FeedContent {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", score=" + score +
-                ", personalities=" + personalities +
+                ", personalities=" + Arrays.toString(personalities) +
                 ", introduce='" + introduce + '\'' +
+                ", userId=" + Arrays.toString(userId) +
                 '}';
     }
 }

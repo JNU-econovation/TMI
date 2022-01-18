@@ -48,16 +48,14 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     private int score;
     private String[] personalities;
     private String introduce;
+    private String[] userId;
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
-    public static FeedContentFragment newInstance(String profileUrl,
-                                                  String name,
-                                                  int age,
-                                                  int score,
-                                                  String[] personalities,
-                                                  String introduce) {
 
+    // Fragment는 기본생성자를 사용하는것이 거의 강제되기 때문에, 데이터를 전달할 경우
+    // 다음과 같이 newInstance()의 인자로 값을 받아서, Bundle에 담아 꺼내 쓰는 방식을 사용해야한다.
+    public static FeedContentFragment newInstance(String profileUrl, String name, int age, int score, String[] personalities, String introduce, String[] userId) {
 
         FeedContentFragment fragment = new FeedContentFragment();
         Bundle args = new Bundle();
@@ -67,6 +65,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         args.putInt("score", score);
         args.putStringArray("personalities", personalities);
         args.putString("introduce", introduce);
+        args.putStringArray("userId", userId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -83,12 +82,14 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     }
 
     private void setFeedContentData() {
+
         profileUrl = getArguments().getString("profileUrl");
         name = getArguments().getString("name");
         age = getArguments().getInt("age");
         score = getArguments().getInt("score");
         personalities = getArguments().getStringArray("personalities");
         introduce = getArguments().getString("introduce");
+        userId = getArguments().getStringArray("userId");
 
         FeedContent feedContent = FeedContent.builder()
                 .profile(profileUrl)
@@ -108,7 +109,6 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         tv_personality3.setText(feedContent.getPersonalities()[2]);
         tv_personality4.setText(feedContent.getPersonalities()[3]);
         tv_introduce.setText(feedContent.getIntroduce());
-
     }
 
     public void addToLikeList() {
@@ -152,7 +152,6 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         intent.putExtra("personality6", personalities[5]);
         intent.putExtra("personality7", personalities[6]);
         intent.putExtra("introduce", introduce);
-
         startActivity(intent);
     }
 
@@ -181,6 +180,8 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
                 likeUserDtoCall.enqueue(new Callback<LikeUserDto>() {
                     @Override
                     public void onResponse(Call<LikeUserDto> call, Response<LikeUserDto> response) {
+
+
                     }
 
                     @Override

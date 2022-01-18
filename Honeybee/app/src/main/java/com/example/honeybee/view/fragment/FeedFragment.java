@@ -48,6 +48,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private int score;
     private String[] personalities;
     private String introduce;
+    private String[] userId;
 
     private FeedFragment() {
     }
@@ -60,7 +61,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         return fragment;
     }
 
-    @Override1
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -75,10 +76,9 @@ public class FeedFragment extends Fragment implements FeedContract.View{
 
         acitvateFeedPager(view);
 
-
-
         return view;
     }
+
     public void acitvateFeedPager(View view) {
         presenter = new FeedContentPresenterImpl(this);
 
@@ -98,9 +98,10 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                     score = feedContent.getScore();
                     personalities = feedContent.getPersonalities();
                     introduce = feedContent.getIntroduce();
+                    userId = feedContent.getUserId();
 
                     presenter.setFragment(FeedContentFragment.newInstance(
-                            profileUrl, name, age, score, personalities, introduce));
+                            profileUrl, name, age, score, personalities, introduce, userId));
                 }
             }
 
