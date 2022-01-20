@@ -15,7 +15,7 @@ import com.example.honeybee.R;
 public class WishFragment extends Fragment {
     private static final String TAG = "WishFragment.class";
 
-    private WishFragment() {
+    public WishFragment() {
     }
 
     public static WishFragment newInstance() {
@@ -29,7 +29,7 @@ public class WishFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        Log.d(TAG, "WishFragment onCreateView() called");
         return inflater.inflate(R.layout.fragment_wish, container, false);
     }
 }

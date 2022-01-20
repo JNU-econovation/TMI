@@ -1,6 +1,7 @@
 package com.example.honeybee.view.fragment;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +11,13 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.honeybee.BuildConfig;
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
 import com.example.honeybee.model.UserData;
@@ -23,9 +26,12 @@ import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
 import com.example.honeybee.view.adapter.MainPageAdapter;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.SneakyThrows;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,7 +53,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private ArrayList<String> personality;
     private String introduce;
 
-    private FeedFragment() {
+    public FeedFragment() {
     }
 
     public static FeedFragment newInstance() {
@@ -58,54 +64,26 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         return fragment;
     }
 
+    @SneakyThrows
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-
-        }
+        getFeedData();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         Log.d(TAG, "onCreateView 호출");
 
-        acitvateFeedPager(view);
+        activateFeedPager(view);
 
         return view;
     }
 
-    public void acitvateFeedPager(View view) {
+    public void activateFeedPager(View view) {
         presenter = new FeedContentPresenterImpl(this);
-
-        Call<List<UserData>> listCall = NetRetrofit.retrofitService.userDatafindAll();
-        listCall.enqueue(new Callback<List<UserData>>() {
-
-            @Override
-            public void onResponse(Call<List<UserData>> call, Response<List<UserData>> response) {
-                List<UserData> userDatas = response.body();
-                for (UserData data : userDatas) {
-                    Log.d(TAG, "tmiData = " + data);
-                }
-
-                for (UserData userData : userDatas) {
-                    user_image = userData.getUser_image();
-                    nickname = userData.getNickname();
-                    age = userData.getAge();
-                    personality = userData.getPersonality();
-                    introduce = userData.getIntroduce();
-
-                    presenter.setFragment(FeedContentFragment.newInstance(
-                            user_image, nickname, age, personality, introduce));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<UserData>> call, Throwable t) {
-                Log.e(TAG, t.getMessage());
-            }
-        });
 
         pager = view.findViewById(R.id.viewPager);
         pagerAdapter = new MainPageAdapter(getChildFragmentManager(), new Lifecycle() {
@@ -168,6 +146,41 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                 pagerAdapter.notifyDataSetChanged();
             }
         });
+
+        pager.setSaveEnabled(false);
+    }
+
+
+    public void getFeedData() {
+        Log.d(TAG, "getFeedData() called");
+        if (getArguments() != null) {
+            Call<List<UserData>> listCall = NetRetrofit.retrofitService.userDatafindAll();
+            listCall.enqueue(new Callback<List<UserData>>() {
+                @Override
+                public void onResponse(Call<List<UserData>> call, Response<List<UserData>> response) {
+                    List<UserData> userDatas = response.body();
+                    for (UserData data : userDatas) {
+                        Log.d(TAG, "tmiData = " + data);
+                    }
+
+                    for (UserData userData : userDatas) {
+                        user_image = userData.getUser_image();
+                        nickname = userData.getNickname();
+                        age = userData.getAge();
+                        personality = userData.getPersonality();
+                        introduce = userData.getIntroduce();
+
+                        presenter.setFragment(FeedContentFragment.newInstance(
+                                user_image, nickname, age, personality, introduce));
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<UserData>> call, Throwable t) {
+                    Log.e(TAG, t.getMessage());
+                }
+            });
+        }
     }
 
     @Override

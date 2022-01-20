@@ -14,7 +14,7 @@ import com.example.honeybee.R;
 public class ProfileFragment extends Fragment {
 
 
-    private ProfileFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 

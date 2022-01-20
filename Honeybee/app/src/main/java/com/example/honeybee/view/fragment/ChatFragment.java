@@ -14,7 +14,7 @@ import com.example.honeybee.R;
 public class ChatFragment extends Fragment {
 
 
-    private ChatFragment() {
+    public ChatFragment() {
 
     }
 
