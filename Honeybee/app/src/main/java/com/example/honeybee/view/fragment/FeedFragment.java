@@ -17,13 +17,13 @@ import android.view.ViewGroup;
 
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
-import com.example.honeybee.model.TmiData;
-import com.example.honeybee.model.dto.FeedContentDto;
+import com.example.honeybee.model.UserData;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
 import com.example.honeybee.view.adapter.MainPageAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -39,12 +39,12 @@ public class FeedFragment extends Fragment implements FeedContract.View{
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
-    private List<TmiData> allTmiData;
+    private List<UserData> allUserData;
 
-    private String[] user_image;
+    private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
-    private String[] personality;
+    private ArrayList<String> personality;
     private String introduce;
 
     private FeedFragment() {
@@ -79,22 +79,22 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public void acitvateFeedPager(View view) {
         presenter = new FeedContentPresenterImpl(this);
 
-        Call<List<TmiData>> listCall = NetRetrofit.retrofitService.findAll();
-        listCall.enqueue(new Callback<List<TmiData>>() {
+        Call<List<UserData>> listCall = NetRetrofit.retrofitService.userDatafindAll();
+        listCall.enqueue(new Callback<List<UserData>>() {
 
             @Override
-            public void onResponse(Call<List<TmiData>> call, Response<List<TmiData>> response) {
-                List<TmiData> tmiDatas = response.body();
-                for (TmiData data : tmiDatas) {
+            public void onResponse(Call<List<UserData>> call, Response<List<UserData>> response) {
+                List<UserData> userDatas = response.body();
+                for (UserData data : userDatas) {
                     Log.d(TAG, "tmiData = " + data);
                 }
 
-                for (TmiData tmiData : tmiDatas) {
-                    user_image = tmiData.getUser_image();
-                    nickname = tmiData.getNickname();
-                    age = tmiData.getAge();
-                    personality = tmiData.getPersonality();
-                    introduce = tmiData.getIntroduce();
+                for (UserData userData : userDatas) {
+                    user_image = userData.getUser_image();
+                    nickname = userData.getNickname();
+                    age = userData.getAge();
+                    personality = userData.getPersonality();
+                    introduce = userData.getIntroduce();
 
                     presenter.setFragment(FeedContentFragment.newInstance(
                             user_image, nickname, age, personality, introduce));
@@ -102,7 +102,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
             }
 
             @Override
-            public void onFailure(Call<List<TmiData>> call, Throwable t) {
+            public void onFailure(Call<List<UserData>> call, Throwable t) {
                 Log.e(TAG, t.getMessage());
             }
         });
@@ -174,7 +174,6 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public void addFragment(Fragment fragment) {
         Log.d(TAG, "addFragment() 호출" + fragment.toString());
         pagerAdapter.addItem(fragment);
-
     }
 
     @Override

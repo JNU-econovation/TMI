@@ -16,15 +16,15 @@ import lombok.Setter;
 @Data
 public class FeedContentDto {
 
-    private String[] user_image;
+    private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
-    private String[] personality;
+    private ArrayList<String> personality;
     private String introduce;
 
 
     @Builder
-    public FeedContentDto(String[] user_image, String nickname, Integer age, String[] personality, String introduce) {
+    public FeedContentDto(ArrayList<String> user_image, String nickname, Integer age, ArrayList<String> personality, String introduce) {
         this.user_image = user_image;
         this.nickname = nickname;
         this.age = age;

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.honeybee.R;
 
+import java.util.ArrayList;
+
 public class DetailFeedContentActivity extends AppCompatActivity {
     private ImageView iv_profile;
     private TextView tv_name;
@@ -33,7 +35,7 @@ public class DetailFeedContentActivity extends AppCompatActivity {
     private TextView tv_height;
 
 
-    private String[] user_image;
+    private ArrayList<String> user_image;
     private String nickname;
     private int age;
     private String personality1;
@@ -79,7 +81,7 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        user_image = intent.getStringArrayExtra("user_image");
+        user_image = intent.getStringArrayListExtra("user_image");
         nickname = intent.getStringExtra("nickname");
         age = intent.getIntExtra("age",0);
         personality1 = intent.getStringExtra("personality1");

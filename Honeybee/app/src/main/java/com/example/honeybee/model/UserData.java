@@ -3,11 +3,13 @@ package com.example.honeybee.model;
 
 import android.graphics.Point;
 
+import java.util.ArrayList;
+
 import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class TmiData {
+public class UserData {
 
     String u_id;
     String password;
@@ -22,27 +24,27 @@ public class TmiData {
     String smoking;
     String dringking;
     Integer height;
-    String[] user_image;
+    ArrayList<String> user_image;
 
     InterestData interestData;      // 관심사
 
-    String[] interest;
-    String[] personality;
+    ArrayList<String> interest;
+    ArrayList<String> personality;
     String introduce;
 
     IdealTypeData idealTypeData;    // 이상형
 
     String app_join;                // 어플 가입 목적
-    String[] pick_person;           // string[]
+    ArrayList<String> pick_person;           // string[]
 
     @Builder
-    public TmiData(String u_id, String password, String nickname,
-                   Integer age, String gender, String studentNumber,
-                   String department, String mbti, String religion,
-                   Point location, String smoking, String dringking,
-                   Integer height, String[] user_image, InterestData interestData,
-                   String[] interest, String[] personality, String introduce,
-                   IdealTypeData idealTypeData, String app_join, String[] pick_person) {
+    public UserData(String u_id, String password, String nickname,
+                    Integer age, String gender, String studentNumber,
+                    String department, String mbti, String religion,
+                    Point location, String smoking, String dringking,
+                    Integer height, ArrayList<String> user_image, InterestData interestData,
+                    ArrayList<String> interest, ArrayList<String> personality, String introduce,
+                    IdealTypeData idealTypeData, String app_join, ArrayList<String> pick_person) {
 
         this.u_id = u_id;
         this.password = password;

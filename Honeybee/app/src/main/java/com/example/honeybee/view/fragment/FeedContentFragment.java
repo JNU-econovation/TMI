@@ -15,9 +15,17 @@ import android.widget.TextView;
 
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
+import com.example.honeybee.model.UserData;
 import com.example.honeybee.model.dto.FeedContentDto;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
+import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FeedContentFragment extends Fragment implements FeedContract.View {
     private final String TAG = "FeedContentFragment.class";
@@ -34,25 +42,27 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     private TextView tv_personality4;
     private TextView tv_introduce;
 
-    private String[] user_image;
+    private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
-    private String[] personality;
+    private ArrayList<String> personality;
     private String introduce;
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
 
+
+
     // Fragment는 기본생성자를 사용하는것이 거의 강제되기 때문에, 데이터를 전달할 경우
     // 다음과 같이 newInstance()의 인자로 값을 받아서, Bundle에 담아 꺼내 쓰는 방식을 사용해야한다.
-    public static FeedContentFragment newInstance(String[] user_image, String nickname, Integer age, String[] personality, String introduce) {
+    public static FeedContentFragment newInstance(ArrayList<String> user_image, String nickname, Integer age, ArrayList<String> personality, String introduce) {
 
         FeedContentFragment fragment = new FeedContentFragment();
         Bundle args = new Bundle();
-        args.putStringArray("user_image", user_image);
+        args.putStringArrayList("user_image", user_image);
         args.putString("nickname", nickname);
         args.putInt("age", age);
-        args.putStringArray("personality", personality);
+        args.putStringArrayList("personality", personality);
         args.putString("introduce", introduce);
         fragment.setArguments(args);
         return fragment;
@@ -71,10 +81,10 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     }
 
     private void setFeedContentData() {
-        user_image = getArguments().getStringArray("user_image");
+        user_image = getArguments().getStringArrayList("user_image");
         nickname = getArguments().getString("nickname");
         age = getArguments().getInt("age");
-        personality = getArguments().getStringArray("personality");
+        personality = getArguments().getStringArrayList("personality");
         introduce = getArguments().getString("introduce");
 
         FeedContentDto feedContentDto = FeedContentDto.builder()
@@ -91,10 +101,10 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         iv_profile.setImageResource(R.drawable.img_maenji);
         tv_name.setText(feedContentDto.getNickname());
         tv_age.setText(String.valueOf(feedContentDto.getAge()));
-        tv_personality1.setText(feedContentDto.getPersonality()[0]);
-        tv_personality2.setText(feedContentDto.getPersonality()[1]);
-        tv_personality3.setText(feedContentDto.getPersonality()[2]);
-        tv_personality4.setText(feedContentDto.getPersonality()[3]);
+        tv_personality1.setText(feedContentDto.getPersonality().get(0));
+        tv_personality2.setText(feedContentDto.getPersonality().get(1));
+        tv_personality3.setText(feedContentDto.getPersonality().get(2));
+        tv_personality4.setText(feedContentDto.getPersonality().get(3));
         tv_introduce.setText(feedContentDto.getIntroduce());
     }
 
@@ -122,13 +132,13 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         intent.putExtra("user_image", user_image);
         intent.putExtra("nickname", nickname);
         intent.putExtra("age", age);
-        intent.putExtra("personality1", personality[0]);
-        intent.putExtra("personality2", personality[1]);
-        intent.putExtra("personality3", personality[2]);
-        intent.putExtra("personality4", personality[3]);
-        intent.putExtra("personality5", personality[4]);
-        intent.putExtra("personality6", personality[5]);
-        intent.putExtra("personality7", personality[6]);
+        intent.putExtra("personality1", personality.get(0));
+        intent.putExtra("personality2", personality.get(1));
+        intent.putExtra("personality3", personality.get(2));
+        intent.putExtra("personality4", personality.get(3));
+        intent.putExtra("personality5", personality.get(4));
+        intent.putExtra("personality6", personality.get(5));
+        intent.putExtra("personality7", personality.get(6));
         intent.putExtra("introduce", introduce);
         startActivity(intent);
     }
@@ -148,11 +158,42 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
     // 찜 목록에 추가하는 메소
     public void addUserIntoLikeList(View view) {
+
         iv_likeButton = view.findViewById(R.id.iv_likeButton);
         iv_likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "nickname =" + nickname);
+                Log.d(TAG, "iv_likeButton click event");
+
+                Call<UserData> getBeforeData = NetRetrofit.getInstance().getRetrofitService().userDataFindById("김현지");
+                getBeforeData.enqueue(new Callback<UserData>() {
+                    @Override
+                    public void onResponse(Call<UserData> call, Response<UserData> response) {
+                        UserData userData = response.body();
+                        if(userData != null) {
+                            ArrayList<String> pick_person = userData.getPick_person();
+                            pick_person.add(nickname);
+
+                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);
+                            patchAfterData.enqueue(new Callback<UserData>() {
+                                @Override
+                                public void onResponse(Call<UserData> call, Response<UserData> response) {
+                                    Log.d(TAG, "pick_person" + response.body().getPick_person());
+                                }
+
+                                @Override
+                                public void onFailure(Call<UserData> call, Throwable t) {
+                                    Log.d(TAG, "patchAfterData error" + t.getMessage());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserData> call, Throwable t) {
+                        Log.d(TAG, "getBeforeData error" + t.getMessage());
+                    }
+                });
             }
         });
     }

@@ -8,8 +8,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.honeybee.R;
-import com.example.honeybee.model.TmiData;
-import com.example.honeybee.model.dto.FeedContentDto;
+import com.example.honeybee.model.UserData;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.fragment.ChatFragment;
 import com.example.honeybee.view.fragment.FeedFragment;
@@ -33,25 +32,20 @@ public class MainActivity extends AppCompatActivity {
         activateBottomNavigationView();
         getDataWithfindById();
 
-
-//        testGetMappingRetrofit();
-//        testPostMappingRetrofit();
     }
 
     private void getDataWithfindById() {
-
-        // 테스트로 사용할 id = 61e02da1283b566ada5fc98e
-        String id = "61e65e6e5ba69d47c16c411e";
-        Call<TmiData> data = NetRetrofit.getInstance().getRetrofitService().findById(id);
-        data.enqueue(new Callback<TmiData>() {
+        String id = "김현지";
+        Call<UserData> data = NetRetrofit.getInstance().getRetrofitService().userDataFindById(id);
+        data.enqueue(new Callback<UserData>() {
             @Override
-            public void onResponse(Call<TmiData> call, Response<TmiData> response) {
-                TmiData body = response.body();
+            public void onResponse(Call<UserData> call, Response<UserData> response) {
+                UserData body = response.body();
                 Log.d(TAG, body.getIntroduce());
             }
 
             @Override
-            public void onFailure(Call<TmiData> call, Throwable t) {
+            public void onFailure(Call<UserData> call, Throwable t) {
 
             }
         });
