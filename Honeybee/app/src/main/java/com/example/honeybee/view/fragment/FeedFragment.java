@@ -1,5 +1,6 @@
 package com.example.honeybee.view.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -43,10 +44,6 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private MainPageAdapter pagerAdapter;
     private FeedContract.Presenter presenter;
 
-    private DetailFeedContentActivity detailFeedContentActivity;
-
-    private List<UserData> allUserData;
-
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
@@ -64,10 +61,10 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         return fragment;
     }
 
-    @SneakyThrows
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         getFeedData();
     }
 
@@ -140,25 +137,31 @@ public class FeedFragment extends Fragment implements FeedContract.View{
             }
         });
 
-        pager.post(new Runnable() {
-            @Override
-            public void run() {
-                pagerAdapter.notifyDataSetChanged();
-            }
-        });
+        try {
+            Thread.sleep(700);                 // 느린렌더링 문제떄문에 처리해주어야함
+            pager.post(new Runnable() {
+                @SuppressLint("NotifyDataSetChanged")
+                @Override
+                public void run() {
+                    pagerAdapter.notifyDataSetChanged();
+                }
+            });
+        } catch (Exception ignored) {
 
+        }
         pager.setSaveEnabled(false);
     }
-
 
     public void getFeedData() {
         Log.d(TAG, "getFeedData() called");
         if (getArguments() != null) {
             Call<List<UserData>> listCall = NetRetrofit.retrofitService.userDatafindAll();
             listCall.enqueue(new Callback<List<UserData>>() {
+                @SneakyThrows
                 @Override
-                public void onResponse(Call<List<UserData>> call, Response<List<UserData>> response) {
+                public void onResponse(@NonNull Call<List<UserData>> call, @NonNull Response<List<UserData>> response) {
                     List<UserData> userDatas = response.body();
+                    assert userDatas != null;
                     for (UserData data : userDatas) {
                         Log.d(TAG, "tmiData = " + data);
                     }
@@ -176,7 +179,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                 }
 
                 @Override
-                public void onFailure(Call<List<UserData>> call, Throwable t) {
+                public void onFailure(@NonNull Call<List<UserData>> call, @NonNull Throwable t) {
                     Log.e(TAG, t.getMessage());
                 }
             });

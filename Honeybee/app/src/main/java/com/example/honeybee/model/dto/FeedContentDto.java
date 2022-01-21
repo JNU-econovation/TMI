@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +15,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class FeedContentDto {
+public class FeedContentDto implements Serializable {
 
     private ArrayList<String> user_image;
     private String nickname;

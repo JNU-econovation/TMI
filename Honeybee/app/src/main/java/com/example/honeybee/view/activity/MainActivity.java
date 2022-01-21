@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.net.TrafficStats;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -36,13 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectLeakedClosableObjects()
-                .penaltyLog()
-                .build());
-        if(BuildConfig.DEBUG)
-            StrictMode.enableDefaults();
 
         feedFragment = FeedFragment.newInstance();
         activateBottomNavigationView();

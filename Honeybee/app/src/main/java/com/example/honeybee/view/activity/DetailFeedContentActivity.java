@@ -1,18 +1,32 @@
 package com.example.honeybee.view.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.honeybee.R;
+import com.example.honeybee.model.UserData;
+import com.example.honeybee.model.dto.FeedContentDto;
+import com.example.honeybee.view.NetRetrofit;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DetailFeedContentActivity extends AppCompatActivity {
+    private final String TAG = "DetailFeedContentActivity.class";
+
     private ImageView iv_profile;
     private TextView tv_name;
     private TextView tv_age;
@@ -34,19 +48,43 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 
     private TextView tv_height;
 
-
     private ArrayList<String> user_image;
     private String nickname;
     private int age;
-    private String personality1;
-    private String personality2;
-    private String personality3;
-    private String personality4;
-    private String personality5;
-    private String personality6;
-    private String personality7;
+
+    private ArrayList<String> personalities;
     private String introduce;
 
+    private String u_id;
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Log.d(TAG, "onResume()");
+        Call<UserData> getBeforeData = NetRetrofit.getInstance().getRetrofitService().userDataFindById(u_id);
+        getBeforeData.enqueue(new Callback<UserData>() {
+            @Override
+            public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
+
+                UserData userData = response.body();
+                if (userData != null) {
+                    ArrayList<String> pick_person = userData.getPick_person();
+                    if (!pick_person.contains(nickname)) {
+                        iv_likeButton.setImageResource(R.drawable.ic_like);
+                    } else {
+                        iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<UserData> call, @NonNull Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +92,61 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_feed_content);
         init();
         getFeedData();
+        addUserIntoWishList();
+    }
+
+    private void addUserIntoWishList() {
+        iv_likeButton = findViewById(R.id.iv_likeButton);
+        iv_likeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "iv_likeButton click event");
+
+                Call<UserData> getBeforeData = NetRetrofit.getInstance().getRetrofitService().userDataFindById(u_id);
+                getBeforeData.enqueue(new Callback<UserData>() {
+                    @Override
+                    public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
+                        UserData userData = response.body();
+                        if(userData != null) {
+                            ArrayList<String> pick_person = userData.getPick_person();
+
+                            if (!pick_person.contains(nickname)) {
+                                pick_person.add(nickname);
+                                iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                            } else {
+                                pick_person.remove(nickname);
+                                iv_likeButton.setImageResource(R.drawable.ic_like);
+                            }
+
+                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);
+                            patchAfterData.enqueue(new Callback<UserData>() {
+                                @Override
+                                public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
+                                    Log.d(TAG, "pick_person" + response.body().getPick_person());
+                                }
+
+                                @Override
+                                public void onFailure(@NonNull Call<UserData> call, @NonNull Throwable t) {
+                                    Log.d(TAG, "patchAfterData error" + t.getMessage());
+                                }
+                            });
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(@NonNull Call<UserData> call, @NonNull Throwable t) {
+                        Log.d(TAG, "getBeforeData error" + t.getMessage());
+                    }
+                });
+            }
+        });
     }
 
     public void init() {
         iv_profile = findViewById(R.id.iv_profile);
         tv_name = findViewById(R.id.tv_name);
         tv_age = findViewById(R.id.tv_age);
+
         iv_likeButton = findViewById(R.id.iv_likeButton);
         iv_chat = findViewById(R.id.iv_chat);
         tv_college = findViewById(R.id.tv_college);
@@ -80,18 +167,16 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         tv_drinking = findViewById(R.id.tv_drinking);
 
         Intent intent = getIntent();
+        FeedContentDto feedContentDto = (FeedContentDto) intent.getSerializableExtra("feedContentDto");
 
-        user_image = intent.getStringArrayListExtra("user_image");
-        nickname = intent.getStringExtra("nickname");
-        age = intent.getIntExtra("age",0);
-        personality1 = intent.getStringExtra("personality1");
-        personality2 = intent.getStringExtra("personality2");
-        personality3 = intent.getStringExtra("personality3");
-        personality4 = intent.getStringExtra("personality4");
-        personality5 = intent.getStringExtra("personality5");
-        personality6 = intent.getStringExtra("personality6");
-        personality7 = intent.getStringExtra("personality7");
-        introduce = intent.getStringExtra("introduce");
+        user_image = feedContentDto.getUser_image();
+        nickname = feedContentDto.getNickname();
+        age = feedContentDto.getAge();
+        personalities = feedContentDto.getPersonality();
+        introduce = feedContentDto.getIntroduce();
+
+        u_id = intent.getStringExtra("u_id");
+
     }
 
     public void getFeedData() {
@@ -101,21 +186,24 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 //        Glide.with(getBaseContext()).load(profileUrl).into(iv_profile);
         iv_profile.setImageResource(R.drawable.img_maenji);
 
+
         tv_name.setText(nickname);
         tv_age.setText(String.valueOf(age));
         tv_college.setText("산업공학과");
         tv_location.setText("5km");
         tv_mbti.setText("ENFJ");
-        tv_personality1.setText(personality1);
-        tv_personality2.setText(personality2);
-        tv_personality3.setText(personality3);
-        tv_personality4.setText(personality4);
-        tv_personality5.setText(personality5);
-        tv_personality6.setText(personality6);
-        tv_personality7.setText(personality7);
+        tv_personality1.setText(personalities.get(0));
+        tv_personality2.setText(personalities.get(1));
+        tv_personality3.setText(personalities.get(2));
+        tv_personality4.setText(personalities.get(3));
+        tv_personality5.setText(personalities.get(4));
+        tv_personality6.setText(personalities.get(5));
+        tv_personality7.setText(personalities.get(6));
         tv_introduce.setText(introduce);
         tv_smoking.setText("절연");
         tv_drinking.setText("주 5-6번");
         tv_height.setText("162cm");
+
+
     }
 }
