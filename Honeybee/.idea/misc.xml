@@ -28,9 +28,10 @@
         <entry key="app/src/main/res/layout/fragment_feed2.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_feed_content.xml" value="0.346982127133617" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18802083333333333" />
-        <entry key="app/src/main/res/layout/fragment_wish.xml" value="0.23143115942028986" />
+        <entry key="app/src/main/res/layout/fragment_wish.xml" value="0.1995746977827922" />
         <entry key="app/src/main/res/layout/test.xml" value="0.25226449275362317" />
         <entry key="app/src/main/res/layout/test_test.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/layout/wish_list_item.xml" value="0.18297101449275363" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.3890625" />
       </map>
     </option>

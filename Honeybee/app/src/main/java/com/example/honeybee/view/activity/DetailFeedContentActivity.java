@@ -5,19 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.honeybee.R;
 import com.example.honeybee.model.UserData;
 import com.example.honeybee.model.dto.FeedContentDto;
 import com.example.honeybee.view.NetRetrofit;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -72,9 +69,9 @@ public class DetailFeedContentActivity extends AppCompatActivity {
                 if (userData != null) {
                     ArrayList<String> pick_person = userData.getPick_person();
                     if (!pick_person.contains(nickname)) {
-                        iv_likeButton.setImageResource(R.drawable.ic_like);
+                        iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked_detail);
                     } else {
-                        iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                        iv_likeButton.setImageResource(R.drawable.ic_wish_clicked_detail);
                     }
                 }
             }
@@ -112,10 +109,10 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 
                             if (!pick_person.contains(nickname)) {
                                 pick_person.add(nickname);
-                                iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                                iv_likeButton.setImageResource(R.drawable.ic_wish_clicked_detail);
                             } else {
                                 pick_person.remove(nickname);
-                                iv_likeButton.setImageResource(R.drawable.ic_like);
+                                iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked_detail);
                             }
 
                             Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);

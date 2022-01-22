@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.WishFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="wish fragment" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

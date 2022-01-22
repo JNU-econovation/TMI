@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,10 +106,10 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
                     if (!pick_person.contains(nickname)) {
                         Log.d(TAG,"pick_person not contain nickname");
-                        iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                        iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked);
                     } else {
                         Log.d(TAG,"pick_person contain nickname");
-                        iv_likeButton.setImageResource(R.drawable.ic_like);
+                        iv_likeButton.setImageResource(R.drawable.ic_wish_clicked);
                     }
                 }
             }
@@ -208,10 +207,10 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
                             if (!pick_person.contains(nickname)) {
                                 pick_person.add(nickname);
-                                iv_likeButton.setImageResource(R.drawable.ic_like);
+                                iv_likeButton.setImageResource(R.drawable.ic_wish_clicked);
                             } else {
                                 pick_person.remove(nickname);
-                                iv_likeButton.setImageResource(R.drawable.ic_likebutton);
+                                iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked);
                             }
 
                             Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);
