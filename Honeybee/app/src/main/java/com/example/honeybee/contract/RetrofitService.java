@@ -1,0 +1,29 @@
+package com.example.honeybee.contract;
+
+import com.example.honeybee.model.UserData;
+import com.example.honeybee.model.dto.FeedContentDto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.PATCH;
+import retrofit2.http.Path;
+
+public interface RetrofitService {
+
+    @GET("users")
+    Call<List<UserData>> userDatafindAll();
+
+    @GET("users/{u_id}/feedContent")
+    Call<FeedContentDto> feedContentfindById(@Path("u_id") String u_id);
+
+    @PATCH("users/{u_id}/datas")
+    Call<UserData> userDataUpdate(@Path("u_id") String u_id,@Body ArrayList<String> pick_person);
+
+    @GET("users/{u_id}/datas")
+    Call<UserData> userDataFindById(@Path("u_id") String u_id);
+
+}
