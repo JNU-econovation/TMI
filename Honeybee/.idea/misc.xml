@@ -13,6 +13,8 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.18614130434782608" />
         <entry key="app/src/main/res/layout/fragment_authentication.xml" value="0.22871376811594202" />
         <entry key="app/src/main/res/layout/fragment_email.xml" value="0.2950055768694686" />
+        <entry key="app/src/main/res/layout/fragment_general_info.xml" value="0.12211981566820276" />
+        <entry key="app/src/main/res/layout/fragment_register_info.xml" value="0.2749369512722033" />
         <entry key="app/src/main/res/menu/register_nav_menu.xml" value="0.19163491638262414" />
         <entry key="app/src/main/res/menu/top_nav_menu.xml" value="0.53125" />
       </map>

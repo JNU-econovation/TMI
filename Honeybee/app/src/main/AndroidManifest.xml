@@ -17,9 +17,6 @@
             android:name=".view.activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activity.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".view.activity.AuthenticationActivity"
             android:exported="false" />
         <activity android:name=".view.activity.LoginActivity">

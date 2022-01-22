@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.RegisterActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회원가입 페이지입니다."
-        tools:ignore="MissingConstraints">
-    </TextView>
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

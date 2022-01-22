@@ -13,8 +13,8 @@ import javax.mail.util.ByteArrayDataSource;
 
 public class GmailSender extends javax.mail.Authenticator{
     private String mailhost = "smtp.gmail.com";
-    private String user = "mywnajsldkf" ;
-    private String password = "wjddls0709!";
+    private String user = "" ;
+    private String password = "";
     private Session session;
     private static String emailCode;
 
