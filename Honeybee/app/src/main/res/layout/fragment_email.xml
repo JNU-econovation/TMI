@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일 인증"
+        android:textSize="36dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/email_format">
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/email_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toTopOf="@id/emailAuthBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <EditText
+            android:id="@+id/studentNumber"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/email_format"
+            android:textSize="36dp"></TextView>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/emailAuthBtn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="인증하기"
+        android:textFontWeight="700"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        ></Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
