@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#E5E5E5"
     android:layout_marginTop="21dp">
+    tools:context=".view.activity.MainActivity">
 
     <LinearLayout
         android:id="@+id/top_container"

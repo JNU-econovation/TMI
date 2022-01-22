@@ -10,4 +10,5 @@
     <string name="personality5">음악</string>
     <string name="personality6">즉흥적인</string>
     <string name="personality7">피아노를 좋아하는</string>
+    <string name="email_format"><![CDATA[@jnu.ac.kr]]></string>
 </resources>

@@ -3,6 +3,7 @@
     package="com.example.honeybee">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +18,14 @@
             android:name=".view.activity.DetailFeedContentActivity"
             android:exported="false" />
         <activity android:name=".view.activity.MainActivity">
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".view.activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.AuthenticationActivity"
+            android:exported="false" />
+        <activity android:name=".view.activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

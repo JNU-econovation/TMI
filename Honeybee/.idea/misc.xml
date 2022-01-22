@@ -33,6 +33,19 @@
         <entry key="app/src/main/res/layout/test_test.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/wish_list_item.xml" value="0.18297101449275363" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.3890625" />
+        <entry key="app/src/main/res/font/button_font_family.xml" value="0.36875" />
+        <entry key="app/src/main/res/font/general_font_family.xml" value="0.36875" />
+        <entry key="app/src/main/res/font/title_font_family.xml" value="0.36875" />
+        <entry key="app/src/main/res/layout/activity_authentication.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_longin.xml" value="0.3385416666666667" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.18614130434782608" />
+        <entry key="app/src/main/res/layout/fragment_authentication.xml" value="0.22871376811594202" />
+        <entry key="app/src/main/res/layout/fragment_email.xml" value="0.2950055768694686" />
+        <entry key="app/src/main/res/layout/fragment_general_info.xml" value="0.12211981566820276" />
+        <entry key="app/src/main/res/layout/fragment_register_info.xml" value="0.2749369512722033" />
+        <entry key="app/src/main/res/menu/register_nav_menu.xml" value="0.19163491638262414" />
+        <entry key="app/src/main/res/menu/top_nav_menu.xml" value="0.53125" />
       </map>
     </option>
   </component>
