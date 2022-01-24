@@ -20,6 +20,7 @@ public class NetRetrofit {
     public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

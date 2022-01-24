@@ -97,66 +97,7 @@ public class WishFragment extends Fragment {
                 pick_person = userData.getPick_person();
                 Log.d(TAG, "찜 목록 = " + pick_person);
 
-//                Observable<String> source = Observable.fromIterable(pick_person);
-//                source.subscribe(new Observer<String>() {
-//                    @Override
-//                    public void onSubscribe(@NonNull Disposable d) { }
-//                    @Override
-//                    public void onNext(@NonNull String s) {
-//                        Log.d("비동기처리", "찜 목록에 있는 사용자 outside of enqueue =" + s);
-//                        Observable<String> source2 = Observable.just(s);
-//                        source2.subscribe(new Observer<String>() {
-//                            @Override
-//                            public void onSubscribe(@NonNull Disposable d) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onNext(@NonNull String s) {
-//                                Call<UserData> pickedUserDataCall = NetRetrofit.getInstance().getRetrofitService().userDataFindById(s);
-//                                pickedUserDataCall.enqueue(new Callback<UserData>() {
-//                                    @SuppressLint("NotifyDataSetChanged")
-//                                    @Override
-//                                    public void onResponse(Call<UserData> call, Response<UserData> response) {
-//                                        UserData pickedUserData = response.body();
-//                                        String user_image = pickedUserData.getUser_image().get(0);
-//                                        Log.d("비동기처리", "찜 목록에 있는 사용자 inside of enqueue=" + s);
-//                                        Log.d(TAG, "user_image = " + user_image);
-//                                        wishAdapter.addItem(user_image);
-//                                    }
-//
-//                                    @Override
-//                                    public void onFailure(Call<UserData> call, Throwable t) {
-//                                        Log.d(TAG, t.getMessage());
-//                                    }
-//                                });
-//                            }
-//
-//                            @Override
-//                            public void onError(@NonNull Throwable e) {
-//
-//                            }
-//
-//                            @Override
-//                            public void onComplete() {
-//
-//                            }
-//                        });
-//
-//                        // keep
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull Throwable e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onComplete() {
-//
-//                    }
-//                });
+                // Wish List
                 for (String pickPerson : pick_person) {
                     try {
                         Thread.sleep(50);
@@ -179,9 +120,10 @@ public class WishFragment extends Fragment {
                                     }
 
                                     @Override
-                                    public void onNext(@NonNull String s) {
-                                        Log.d(TAG, "onNext() item =" + s);
-                                        wishAdapter.addItem(s);
+                                    public void onNext(@NonNull String userImage) {
+                                        Log.d(TAG, "onNext() item =" + userImage);
+                                        wishAdapter.addWishUserId(pickPerson);
+                                        wishAdapter.addWishUserImage(userImage);
                                     }
 
                                     @Override

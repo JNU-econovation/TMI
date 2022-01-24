@@ -2,6 +2,7 @@ package com.example.honeybee.view.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -46,8 +47,14 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
+    private String department;
+    private Integer location;
+    private String mbti;
     private ArrayList<String> personality;
     private String introduce;
+    private String smoke;
+    private String drink;
+    private Integer height;
 
     private DetailFeedContentActivity detailFeedContentActivity;
 
@@ -62,15 +69,31 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
     // Fragment는 기본생성자를 사용하는것이 거의 강제되기 때문에, 데이터를 전달할 경우
     // 다음과 같이 newInstance()의 인자로 값을 받아서, Bundle에 담아 꺼내 쓰는 방식을 사용해야한다.
-    public static FeedContentFragment newInstance(ArrayList<String> user_image, String nickname, Integer age, ArrayList<String> personality, String introduce) {
+    public static FeedContentFragment newInstance(ArrayList<String> user_image,
+                                                  String nickname,
+                                                  Integer age,
+                                                  String department,
+                                                  Integer location,
+                                                  String mbti,
+                                                  ArrayList<String> personality,
+                                                  String introduce,
+                                                  String smoke,
+                                                  String drink,
+                                                  Integer height) {
 
         FeedContentFragment fragment = new FeedContentFragment();
         Bundle args = new Bundle();
         args.putStringArrayList("user_image", user_image);
         args.putString("nickname", nickname);
         args.putInt("age", age);
+        args.putString("department", department);
+        args.putInt("location", location);
+        args.putString("mbti", mbti);
         args.putStringArrayList("personality", personality);
         args.putString("introduce", introduce);
+        args.putString("smoke", smoke);
+        args.putString("drink", drink);
+        args.putInt("height", height);
         fragment.setArguments(args);
         return fragment;
     }
@@ -125,15 +148,27 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         user_image = getArguments().getStringArrayList("user_image");
         nickname = getArguments().getString("nickname");
         age = getArguments().getInt("age");
+        department = getArguments().getString("department");
+        location = getArguments().getInt("location");
+        mbti = getArguments().getString("mbti");
         personality = getArguments().getStringArrayList("personality");
         introduce = getArguments().getString("introduce");
+        smoke = getArguments().getString("smoke");
+        drink = getArguments().getString("drink");
+        height = getArguments().getInt("height");
 
         feedContentDto = FeedContentDto.builder()
                 .user_image(user_image)
                 .nickname(nickname)
                 .age(age)
+                .department(department)
+                .location(location)
+                .mbti(mbti)
                 .personality(personality)
                 .introduce(introduce)
+                .smoke(smoke)
+                .drink(drink)
+                .height(height)
                 .build();
 
         /**
@@ -143,6 +178,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         iv_profile.setImageResource(R.drawable.img_maenji);
         tv_name.setText(feedContentDto.getNickname());
         tv_age.setText(String.valueOf(feedContentDto.getAge()));
+
         tv_personality1.setText(feedContentDto.getPersonality().get(0));
         tv_personality2.setText(feedContentDto.getPersonality().get(1));
         tv_personality3.setText(feedContentDto.getPersonality().get(2));
