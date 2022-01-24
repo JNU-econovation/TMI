@@ -6,38 +6,131 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="auth" />
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="WishAdapter" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="add: directory struct">
+    <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
+    <disabled>
+      <disabled_changelists>
+        <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
+          <change afterPath="$PROJECT_DIR$/../.idea/Honeybee2.iml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/.idea/render.experimental.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/FeedContract.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/presenter/FeedContentPresenterImpl.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/ChatFragment.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/FeedContentFragment.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/FeedFragment.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/MainActivity.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/MainPageAdapter.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/ProfileFragment.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/WishFragment.java" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/color/bottom_menu_color.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/empty_heart.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/feed_round_corner.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_like.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/message.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/round_corner.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_personality.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/bg_userinfo.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/feed_info_background.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/feed_profile_background.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bell.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_chat.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_home.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_likebutton.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_score.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_user.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/img_profile.png" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_chat.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feed.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feed_content.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wish.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_menu.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/values/dimen.xml" afterDir="false" />
+          <change afterPath="$PROJECT_DIR$/app/src/main/res/values/style.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/MainActivity.java" beforeDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v24/ic_launcher_background.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+          <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+        </list>
+      </disabled_changelists>
+      <disabled_trackers />
+    </disabled>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/mywnajsldkf/.android/avd/Pixel_3a_API_31.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/chaesang-yeob/.android/avd/Pixel_3a_API_31_arm64-v8a.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Honeybee" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Honeybee" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Honeybee" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="resourceFile" />
+        <option value="valueResourceFile" />
+        <option value="Interface" />
+        <option value="AnnotationType" />
+        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="Android" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -49,32 +142,51 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="202ymE93Xno3ZOlDsctpnevMD1Z" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="memory.settings.postsync.last.time.stamp" value="1642812824176" />
+    <property name="android-custom-view/Users/chaesang-yeob/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
+    <property name="android-custom-view/Users/chaesang-yeob/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1635257268549" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.-350307435">
-      <recent name="com.example.honeybee.view.activity" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    </key>
+    <key name="android.template.641600450">
+      <recent name="com.example.honeybee.view" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/font" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
-    <key name="android.template.1241393735">
+    <key name="android.template.366418203">
       <recent name="com.example.honeybee.view.activity" />
+    </key>
+    <key name="android.template.-53579312">
+      <recent name="com.example.honeybee.view" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.honeybee.presenter" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,19 +265,96 @@
       <option name="presentableId" value="Default" />
       <updated>1635257135879</updated>
     </task>
-    <task id="LOCAL-00001" summary="add: directory structure add">
-      <created>1640620979068</created>
+    <task id="LOCAL-00001" summary="feat: 피드 프로토타입 구현">
+      <created>1641908101237</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1640620979068</updated>
+      <updated>1641908101237</updated>
     </task>
-    <task id="LOCAL-00002" summary="add: directory struct">
-      <created>1640621304395</created>
+    <task id="LOCAL-00002" summary="feat: Retrofit Android connected with Retrofit2">
+      <created>1642143673451</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1640621304395</updated>
+      <updated>1642143673451</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: GetMapping, PostMapping Test Code Added">
+      <created>1642160770799</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1642160770799</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: call data to feed from mongodb">
+      <created>1642388079955</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1642388079955</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: 데이터베이스 값 ViewPager2로 불러오기">
+      <created>1642413746842</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1642413746842</updated>
+    </task>
+    <task id="LOCAL-00006" summary="refactor: 주석 정리, 메소드 리팩토링">
+      <created>1642472757761</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1642472757761</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor: 주석 정리, 메소드 리팩토링">
+      <created>1642472982739</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1642472982739</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat &amp; refactor: add like user &amp; model refactoring">
+      <created>1642653519447</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1642653519447</updated>
+    </task>
+    <task id="LOCAL-00009" summary="refactor: 프래그먼트 전환시 데이터 유지되도록 수정">
+      <created>1642665587717</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1642665587718</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: wish list 기능 구현">
+      <created>1642781166026</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1642781166029</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: wish tab 기능 구현완료">
+      <created>1642847327901</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1642847327901</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactor: .gitignore workspace.xml added">
+      <created>1642848540942</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1642848540942</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor: .gitignore workspace.xml added">
+      <created>1642848773216</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1642848773216</updated>
     </task>
     <task id="LOCAL-00003" summary="add: directory struct">
       <created>1642847392418</created>
@@ -182,7 +371,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Android" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -193,7 +394,5 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
-    <MESSAGE value="add: directory struct" />
-    <option name="LAST_COMMIT_MESSAGE" value="add: directory struct" />
   </component>
 </project>
