@@ -15,10 +15,14 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="add: directory struct">
 =======
     <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
 >>>>>>> a534c7f73d06626e9beaa5922a8b248c7f053b4a
+=======
+    <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
+>>>>>>> f0b5ff18fbe8d75a09a39527ec4c3e0c0c9c9a76
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
@@ -361,6 +365,9 @@
       <updated>1642848773216</updated>
     </task>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f0b5ff18fbe8d75a09a39527ec4c3e0c0c9c9a76
     <task id="LOCAL-00003" summary="add: directory struct">
       <created>1642847392418</created>
       <option name="number" value="00003" />
@@ -369,9 +376,12 @@
       <updated>1642847392418</updated>
     </task>
     <option name="localTasksCounter" value="4" />
+<<<<<<< HEAD
 =======
     <option name="localTasksCounter" value="14" />
 >>>>>>> a534c7f73d06626e9beaa5922a8b248c7f053b4a
+=======
+>>>>>>> f0b5ff18fbe8d75a09a39527ec4c3e0c0c9c9a76
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
