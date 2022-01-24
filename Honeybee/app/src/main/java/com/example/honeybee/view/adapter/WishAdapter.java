@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,14 +32,13 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(TAG, "onCreateViewHolder() 호출 ");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wish_list_item, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, wishLists);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder() wishLists = " + wishLists);
         String s = wishLists.get(position);
-        holder.tv_test.setText(s);
     }
 
     @Override
@@ -57,11 +57,34 @@ public class WishAdapter extends RecyclerView.Adapter<WishAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tv_test;
+        private final String TAG = "ViewHolder.class";
+        private ImageView iv_profile;
+        private ImageView iv_wish;
 
-        public ViewHolder(@NonNull View itemView) {
+        private ArrayList<String> wishLists = new ArrayList<>();
+
+        public ViewHolder(@NonNull View itemView, ArrayList<String> wishLists) {
             super(itemView);
-            tv_test = itemView.findViewById(R.id.tv_test);
+            iv_profile = itemView.findViewById(R.id.iv_profile);
+            iv_wish = itemView.findViewById(R.id.iv_wish);
+
+            this.wishLists = wishLists;
+
+            iv_profile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "iv_profile clicked");
+                }
+            });
+
+            iv_wish.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d(TAG, "iv_wish clicked =" +  wishLists.get(getAdapterPosition()));
+
+                }
+            });
+
         }
     }
 
