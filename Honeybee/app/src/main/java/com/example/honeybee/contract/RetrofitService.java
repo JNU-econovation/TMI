@@ -17,9 +17,6 @@ public interface RetrofitService {
     @GET("users")
     Call<List<UserData>> userDatafindAll();
 
-    @GET("users/{u_id}/feedContent")
-    Call<FeedContentDto> feedContentfindById(@Path("u_id") String u_id);
-
     @PATCH("users/{u_id}/datas")
     Call<UserData> userDataUpdate(@Path("u_id") String u_id,@Body ArrayList<String> pick_person);
 
