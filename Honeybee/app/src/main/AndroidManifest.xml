@@ -12,14 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Honeybee"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        >
+        <activity
+            android:name=".view.activity.DetailFeedContentActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".view.activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.AuthenticationActivity"
             android:exported="false" />
-        <activity android:name=".view.activity.LoginActivity">
+        <activity android:name=".view.activity.MainActivity"
+            android:usesCleartextTraffic="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
