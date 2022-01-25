@@ -2,8 +2,10 @@ package com.example.honeybee.view;
 
 import com.example.honeybee.contract.RetrofitService;
 
+import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -17,6 +19,8 @@ public class NetRetrofit {
 
     public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
             .build();
 

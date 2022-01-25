@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="WishAdapter" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="비동기" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -16,7 +16,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" afterDir="false" />
     </list>
     <disabled>
       <disabled_changelists>
@@ -120,8 +120,8 @@
         <option value="Interface" />
         <option value="AnnotationType" />
         <option value="layoutResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -156,6 +156,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android-custom-view/Users/chaesang-yeob/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_RecyclerView_DIMENSIONS" value="1080&#10;1920" />
     <property name="android-custom-view/Users/chaesang-yeob/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/Users/chaesang-yeob/AndroidStudioProjects/TMI/TEST/Honeybee/app/src/main/java/com/example/honeybee/SquareLayout.java_SELECTED" value="SquareLayout" />
+    <property name="android-custom-view/Users/chaesang-yeob/AndroidStudioProjects/TMI/TEST/Honeybee/app/src/main/java/com/example/honeybee/SquareLayout.java_SquareLayout_DIMENSIONS" value="1080&#10;1920" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="memory.settings.postsync.last.time.stamp" value="1635257268549" />
@@ -356,14 +358,29 @@
       <option name="project" value="LOCAL" />
       <updated>1642848773216</updated>
     </task>
-    <task id="LOCAL-00003" summary="add: directory struct">
-      <created>1642847392418</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
+
+    <task id="LOCAL-00014" summary="refactor: Build failed fixed">
+      <created>1642861539015</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
       <option name="project" value="LOCAL" />
-      <updated>1642847392418</updated>
+      <updated>1642861539017</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00015" summary="refactor: wish list 순서보장문제 임시해결(Thread sleep)">
+      <created>1642995484387</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1642995484387</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactor: feedContentDto 필드 완전구성">
+      <created>1643024618773</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1643024618774</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
