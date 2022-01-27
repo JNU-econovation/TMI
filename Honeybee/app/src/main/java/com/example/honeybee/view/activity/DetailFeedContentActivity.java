@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -48,9 +49,14 @@ public class DetailFeedContentActivity extends AppCompatActivity {
     private ArrayList<String> user_image;
     private String nickname;
     private int age;
-
+    private String department;
+    private Integer location;
+    private String mbti;
     private ArrayList<String> personalities;
     private String introduce;
+    private String smoke;
+    private String drink;
+    private Integer height;
 
     private String u_id;
 
@@ -169,8 +175,14 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         user_image = feedContentDto.getUser_image();
         nickname = feedContentDto.getNickname();
         age = feedContentDto.getAge();
+        department = feedContentDto.getDepartment();
+        location = feedContentDto.getLocation();
+        mbti = feedContentDto.getMbti();
         personalities = feedContentDto.getPersonality();
         introduce = feedContentDto.getIntroduce();
+        smoke = feedContentDto.getSmoke();
+        drink = feedContentDto.getDrink();
+        height = feedContentDto.getHeight();
 
         u_id = intent.getStringExtra("u_id");
 
@@ -183,12 +195,11 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 //        Glide.with(getBaseContext()).load(profileUrl).into(iv_profile);
         iv_profile.setImageResource(R.drawable.img_maenji);
 
-
         tv_name.setText(nickname);
         tv_age.setText(String.valueOf(age));
-        tv_college.setText("산업공학과");
+        tv_college.setText(department);
         tv_location.setText("5km");
-        tv_mbti.setText("ENFJ");
+        tv_mbti.setText(mbti);
         tv_personality1.setText(personalities.get(0));
         tv_personality2.setText(personalities.get(1));
         tv_personality3.setText(personalities.get(2));
@@ -197,10 +208,9 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         tv_personality6.setText(personalities.get(5));
         tv_personality7.setText(personalities.get(6));
         tv_introduce.setText(introduce);
-        tv_smoking.setText("절연");
-        tv_drinking.setText("주 5-6번");
-        tv_height.setText("162cm");
-
+        tv_smoking.setText(smoke);
+        tv_drinking.setText(drink);
+        tv_height.setText(height + "cm");
 
     }
 }

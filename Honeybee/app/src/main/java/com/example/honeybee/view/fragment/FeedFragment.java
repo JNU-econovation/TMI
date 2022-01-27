@@ -2,6 +2,7 @@ package com.example.honeybee.view.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.graphics.Point;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -47,8 +48,14 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
+    private String department;
+    private Integer location;
+    private String mbti;
     private ArrayList<String> personality;
     private String introduce;
+    private String smoke;
+    private String drink;
+    private Integer height;
 
     public FeedFragment() {
     }
@@ -170,11 +177,17 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                         user_image = userData.getUser_image();
                         nickname = userData.getNickname();
                         age = userData.getAge();
+                        department = userData.getDepartment();
+                        location = userData.getLocation();
+                        mbti = userData.getMbti();
                         personality = userData.getPersonality();
                         introduce = userData.getIntroduce();
+                        smoke = userData.getSmoking();
+                        drink = userData.getDringking();
+                        height = userData.getHeight();
 
                         presenter.setFragment(FeedContentFragment.newInstance(
-                                user_image, nickname, age, personality, introduce));
+                                user_image, nickname, age, department, location, mbti, personality, introduce, smoke, drink, height));
                     }
                 }
 

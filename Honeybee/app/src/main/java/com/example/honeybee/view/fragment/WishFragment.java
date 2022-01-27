@@ -16,10 +16,21 @@ import android.view.ViewGroup;
 import com.example.honeybee.R;
 import com.example.honeybee.model.UserData;
 import com.example.honeybee.view.NetRetrofit;
+import com.example.honeybee.view.WishSubscriber;
 import com.example.honeybee.view.adapter.WishAdapter;
+import com.example.honeybee.view.layout.WishItemDecoration;
+
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
 
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +46,7 @@ public class WishFragment extends Fragment {
     private ArrayList<String> picked_user_image = new ArrayList<>();
 
     private ArrayList<String> pick_person;
+    private Observable<String> observable;
 
     public WishFragment() {
 
@@ -61,7 +73,6 @@ public class WishFragment extends Fragment {
         init(view);
         getWishList();
 
-
         recyclerView.setAdapter(wishAdapter);
         return view;
     }
@@ -69,12 +80,14 @@ public class WishFragment extends Fragment {
     public void init(View view ) {
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),3));
-
+        recyclerView.addItemDecoration(new WishItemDecoration(getContext()));
         wishAdapter = new WishAdapter();
     }
 
     public void getWishList() {
         picked_user_image = new ArrayList<>();
+        WishSubscriber<String> wishSubscriber = new WishSubscriber<String>();
+
         Call<UserData> userDataCall = NetRetrofit.getInstance().getRetrofitService().userDataFindById(u_id);
         userDataCall.enqueue(new Callback<UserData>() {
             @Override
@@ -84,23 +97,55 @@ public class WishFragment extends Fragment {
                 pick_person = userData.getPick_person();
                 Log.d(TAG, "찜 목록 = " + pick_person);
 
+                // Wish List
                 for (String pickPerson : pick_person) {
-                    Call<UserData> pickedUserDataCall = NetRetrofit.getInstance().getRetrofitService().userDataFindById(pickPerson);
-                    pickedUserDataCall.enqueue(new Callback<UserData>() {
-                        @SuppressLint("NotifyDataSetChanged")
-                        @Override
-                        public void onResponse(Call<UserData> call, Response<UserData> response) {
-                            UserData pickedUserData = response.body();
-                            String user_image = pickedUserData.getUser_image().get(0);
-                            wishAdapter.addItem(user_image);
-                            Log.d(TAG, "찜 목록에 추가된 유저들의 프로필 사진 = " + picked_user_image);
-                        }
+                    try {
+                        Thread.sleep(50);
+                        Call<UserData> pickedUserDataCall = NetRetrofit.getInstance().getRetrofitService().userDataFindById(pickPerson);
+                        pickedUserDataCall.enqueue(new Callback<UserData>() {
+                            @SuppressLint("NotifyDataSetChanged")
+                            @Override
+                            public void onResponse(Call<UserData> call, Response<UserData> response) {
 
-                        @Override
-                        public void onFailure(Call<UserData> call, Throwable t) {
+                                UserData pickedUserData = response.body();
+                                String user_image = pickedUserData.getUser_image().get(0);
+                                Log.d(TAG, "pickPerson =" + pickPerson);
+                                Log.d(TAG, "user_image = " + user_image);
+//                                wishAdapter.addItem(user_image);
+                                observable = Observable.just(user_image);
+                                observable.subscribe(new Observer<String>() {
+                                    @Override
+                                    public void onSubscribe(@NonNull Disposable d) {
 
-                        }
-                    });
+                                    }
+
+                                    @Override
+                                    public void onNext(@NonNull String userImage) {
+                                        Log.d(TAG, "onNext() item =" + userImage);
+                                        wishAdapter.addWishUserId(pickPerson);
+                                        wishAdapter.addWishUserImage(userImage);
+                                    }
+
+                                    @Override
+                                    public void onError(@NonNull Throwable e) {
+
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailure(Call<UserData> call, Throwable t) {
+                                Log.d(TAG, t.getMessage());
+                            }
+                        });
+                    } catch (Exception e) {
+
+                    }
                 }
 
             }

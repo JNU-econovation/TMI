@@ -20,7 +20,7 @@ public class UserData {
     String department;
     String mbti;
     String religion;
-    Point location;
+    Integer location;
     String smoking;
     String dringking;
     Integer height;
@@ -41,7 +41,7 @@ public class UserData {
     public UserData(String u_id, String password, String nickname,
                     Integer age, String gender, String studentNumber,
                     String department, String mbti, String religion,
-                    Point location, String smoking, String dringking,
+                    Integer location, String smoking, String dringking,
                     Integer height, ArrayList<String> user_image, InterestData interestData,
                     ArrayList<String> interest, ArrayList<String> personality, String introduce,
                     IdealTypeData idealTypeData, String app_join, ArrayList<String> pick_person) {

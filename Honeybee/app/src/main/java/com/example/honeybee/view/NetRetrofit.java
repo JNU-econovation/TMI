@@ -4,8 +4,10 @@ import com.example.honeybee.contract.RetrofitService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import io.reactivex.plugins.RxJavaPlugins;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
@@ -24,6 +26,9 @@ public class NetRetrofit {
     public static Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create(getInstance().gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
             .build();
 
     public static RetrofitService retrofitService = retrofit.create(RetrofitService.class);

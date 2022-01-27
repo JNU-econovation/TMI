@@ -3,28 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.24259259259259258" />
-        <entry key="app/src/main/res/drawable/large_button.xml" value="0.128125" />
-        <entry key="app/src/main/res/font/button_font_family.xml" value="0.36875" />
-        <entry key="app/src/main/res/font/general_font_family.xml" value="0.36875" />
-        <entry key="app/src/main/res/font/title_font_family.xml" value="0.36875" />
-        <entry key="app/src/main/res/layout/activity_authentication.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.26851851851851855" />
-        <entry key="app/src/main/res/layout/activity_longin.xml" value="0.3385416666666667" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.18614130434782608" />
-        <entry key="app/src/main/res/layout/activity_test.xml" value="0.1802536231884058" />
-        <entry key="app/src/main/res/layout/fragment_authentication.xml" value="0.22871376811594202" />
-        <entry key="app/src/main/res/layout/fragment_email.xml" value="0.2950055768694686" />
-        <entry key="app/src/main/res/layout/fragment_general_info.xml" value="0.12211981566820276" />
-        <entry key="app/src/main/res/layout/fragment_image.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_login_info.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.10572916666666667" />
-        <entry key="app/src/main/res/layout/fragment_register_info.xml" value="0.2749369512722033" />
-        <entry key="app/src/main/res/layout/fragment_user_info.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/fragment_user_more.xml" value="0.2028985507246377" />
-        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.39351851851851855" />
-        <entry key="app/src/main/res/menu/register_nav_menu.xml" value="0.19163491638262414" />
-        <entry key="app/src/main/res/menu/top_nav_menu.xml" value="0.53125" />
       </map>
     </option>
   </component>
