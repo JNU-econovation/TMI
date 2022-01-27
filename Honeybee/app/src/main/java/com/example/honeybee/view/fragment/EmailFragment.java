@@ -92,7 +92,6 @@ public class EmailFragment extends Fragment {
         return AuthenticationKey;
     }
 
-
     public void MailSender(String studentNumber, String authKey){
         String jnuDomain = "@jnu.ac.kr";
 

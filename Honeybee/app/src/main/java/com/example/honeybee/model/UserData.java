@@ -15,6 +15,7 @@ public class UserData {
     String password;
     String nickname;
     Integer age;
+    Integer score;
     String gender;
     String studentNumber;
     String department;
@@ -39,7 +40,7 @@ public class UserData {
 
     @Builder
     public UserData(String u_id, String password, String nickname,
-                    Integer age, String gender, String studentNumber,
+                    Integer age,Integer score, String gender, String studentNumber,
                     String department, String mbti, String religion,
                     Integer location, String smoking, String dringking,
                     Integer height, ArrayList<String> user_image, InterestData interestData,
@@ -49,6 +50,7 @@ public class UserData {
         this.u_id = u_id;
         this.password = password;
         this.nickname = nickname;
+        this.score = score;
         this.age = age;
         this.gender = gender;
         this.studentNumber = studentNumber;

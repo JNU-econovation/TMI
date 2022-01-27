@@ -73,4 +73,10 @@ dependencies {
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+
+    //Jackson Mapper 라이브러리
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.13.1'
+    implementation "com.fasterxml.jackson.core:jackson-annotations:2.13.1"
+    implementation "com.fasterxml.jackson.core:jackson-databind:2.13.1"
+    implementation "com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1"
 }
