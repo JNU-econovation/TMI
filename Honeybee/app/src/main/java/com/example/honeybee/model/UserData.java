@@ -70,4 +70,5 @@ public class UserData {
         this.app_join = app_join;
         this.pick_person = pick_person;
     }
+
 }

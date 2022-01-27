@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.example.honeybee.R;
-import com.example.honeybee.view.fragment.RegisterInfoFragment;
+import com.example.honeybee.view.fragment.LoginInfoFragment;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -16,6 +16,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.fragment_layout, RegisterInfoFragment.newInstance()).commit();
+        fragmentTransaction.add(R.id.fragment_layout, LoginInfoFragment.newInstance()).commit();
     }
 }

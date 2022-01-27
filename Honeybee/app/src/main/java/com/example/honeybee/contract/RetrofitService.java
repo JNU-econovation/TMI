@@ -2,6 +2,7 @@ package com.example.honeybee.contract;
 
 import com.example.honeybee.model.AiRequestData;
 import com.example.honeybee.model.AiResponseData;
+import com.example.honeybee.model.dto.LoginData;
 import com.example.honeybee.model.UserData;
 import com.example.honeybee.model.dto.FeedContentDto;
 
@@ -21,7 +22,7 @@ public interface RetrofitService {
     Call<List<UserData>> userDatafindAll();
 
     @PATCH("users/{u_id}/datas")
-    Call<UserData> userDataUpdate(@Path("u_id") String u_id,@Body ArrayList<String> pick_person);
+    Call<UserData> userDataUpdate(@Path("u_id") String u_id, @Body ArrayList<String> pick_person);
 
     @GET("users/{u_id}/datas")
     Call<UserData> userDataFindById(@Path("u_id") String u_id);
@@ -29,5 +30,6 @@ public interface RetrofitService {
     @POST("https://zqtx5ohilf.execute-api.ap-northeast-2.amazonaws.com/default/request-list")
     Call<AiResponseData> userScoreFindById(@Body AiRequestData aiRequestData);
 
-
+    @POST("user/login")
+    Call<String> userLogin(@Body LoginData loginData);
 }
