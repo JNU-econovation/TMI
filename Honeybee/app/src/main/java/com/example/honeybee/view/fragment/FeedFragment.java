@@ -22,16 +22,27 @@ import android.view.ViewGroup;
 import com.example.honeybee.BuildConfig;
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
+import com.example.honeybee.model.AiRequestData;
+import com.example.honeybee.model.AiResponseData;
 import com.example.honeybee.model.UserData;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
 import com.example.honeybee.view.adapter.MainPageAdapter;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import lombok.SneakyThrows;
 import retrofit2.Call;
@@ -48,6 +59,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
+    private Integer score;
     private String department;
     private Integer location;
     private String mbti;
@@ -72,7 +84,8 @@ public class FeedFragment extends Fragment implements FeedContract.View{
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        getFeedData();
+//        getFeedData();
+        getScoreDataFromAI();
     }
 
     @Override
@@ -145,7 +158,6 @@ public class FeedFragment extends Fragment implements FeedContract.View{
         });
 
         try {
-            Thread.sleep(700);                 // 느린렌더링 문제떄문에 처리해주어야함
             pager.post(new Runnable() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
@@ -177,6 +189,7 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                         user_image = userData.getUser_image();
                         nickname = userData.getNickname();
                         age = userData.getAge();
+                        score = userData.getScore();
                         department = userData.getDepartment();
                         location = userData.getLocation();
                         mbti = userData.getMbti();
@@ -186,8 +199,8 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                         drink = userData.getDringking();
                         height = userData.getHeight();
 
-                        presenter.setFragment(FeedContentFragment.newInstance(
-                                user_image, nickname, age, department, location, mbti, personality, introduce, smoke, drink, height));
+//                        presenter.setFragment(FeedContentFragment.newInstance(
+//                                user_image, nickname, age, score, department, location, mbti, personality, introduce, smoke, drink, height));
                     }
                 }
 
@@ -196,7 +209,68 @@ public class FeedFragment extends Fragment implements FeedContract.View{
                     Log.e(TAG, t.getMessage());
                 }
             });
+
         }
+    }
+
+    public void getScoreDataFromAI() {
+        AiRequestData aiRequestData = new AiRequestData("120");
+        Call<AiResponseData> userScoreFindById = NetRetrofit.retrofitService.userScoreFindById(aiRequestData);
+        userScoreFindById.enqueue(new Callback<AiResponseData>() {
+            @Override
+            public void onResponse(Call<AiResponseData> call, Response<AiResponseData> response) {
+                String result = response.body().getResult();
+                Log.d(TAG, "getScoreDataFromAI = " + result);
+                int i=0;
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
+                try {
+                    Map<String, Double> map = mapper.readValue(result, new TypeReference<Map<String, Double>>(){});
+                    Set<String> keys = map.keySet();
+
+                    for (String key : keys) {
+                        int score = (int) Math.round(map.get(key) * 100);
+                        Call<UserData> userDataFindById = NetRetrofit.retrofitService.userDataFindById(key);
+                        userDataFindById.enqueue(new Callback<UserData>() {
+                            @Override
+                            public void onResponse(Call<UserData> call, Response<UserData> response) {
+                                Log.d(TAG, "response = " + response.body());
+                                UserData userData = response.body();
+                                presenter.setFragment(
+                                        FeedContentFragment.newInstance(
+                                                userData.getUser_image(),
+                                                userData.getNickname(),
+                                                userData.getAge(),
+                                                score,
+                                                userData.getDepartment(),
+                                                userData.getLocation(),
+                                                userData.getMbti(),
+                                                userData.getPersonality(),
+                                                userData.getIntroduce(),
+                                                userData.getSmoking(),
+                                                userData.getDringking(),
+                                                userData.getHeight(),
+                                                key));
+                            }
+
+                            @Override
+                            public void onFailure(Call<UserData> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                } catch (JsonMappingException e) {
+                    e.printStackTrace();
+                } catch (JsonProcessingException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AiResponseData> call, Throwable t) {
+                System.out.println(t.getMessage());
+            }
+        });
     }
 
     @Override

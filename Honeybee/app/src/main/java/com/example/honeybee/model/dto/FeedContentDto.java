@@ -21,6 +21,7 @@ public class FeedContentDto implements Serializable {
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
+    private Integer score;
     private String department;
     private Integer location;
     private String mbti;
@@ -31,10 +32,11 @@ public class FeedContentDto implements Serializable {
     private Integer height;
 
     @Builder
-    public FeedContentDto(ArrayList<String> user_image, String nickname, Integer age, String department, Integer location, String mbti, ArrayList<String> personality, String introduce, String smoke, String drink, Integer height) {
+    public FeedContentDto(ArrayList<String> user_image, String nickname, Integer age,Integer score, String department, Integer location, String mbti, ArrayList<String> personality, String introduce, String smoke, String drink, Integer height) {
         this.user_image = user_image;
         this.nickname = nickname;
         this.age = age;
+        this.score = score;
         this.department = department;
         this.location = location;
         this.mbti = mbti;

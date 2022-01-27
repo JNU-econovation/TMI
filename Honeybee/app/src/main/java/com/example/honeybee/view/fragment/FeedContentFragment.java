@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.honeybee.R;
 import com.example.honeybee.contract.FeedContract;
 import com.example.honeybee.model.UserData;
@@ -22,6 +23,7 @@ import com.example.honeybee.model.dto.FeedContentDto;
 import com.example.honeybee.presenter.FeedContentPresenterImpl;
 import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.activity.DetailFeedContentActivity;
+import com.example.honeybee.view.adapter.WishAdapter;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     private ArrayList<String> user_image;
     private String nickname;
     private Integer age;
+    private Integer score;
     private String department;
     private Integer location;
     private String mbti;
@@ -63,7 +66,10 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     /**
      * String u_id -> 현재 로그인한 사용자 u_id
      */
-    private String u_id = "김현지";
+    private String u_id = "120";
+    private String feedUid;
+
+    private WishAdapter wishAdapter;
 
 
 
@@ -72,6 +78,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     public static FeedContentFragment newInstance(ArrayList<String> user_image,
                                                   String nickname,
                                                   Integer age,
+                                                  Integer score,
                                                   String department,
                                                   Integer location,
                                                   String mbti,
@@ -79,13 +86,15 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
                                                   String introduce,
                                                   String smoke,
                                                   String drink,
-                                                  Integer height) {
+                                                  Integer height,
+                                                  String feedUid) {
 
         FeedContentFragment fragment = new FeedContentFragment();
         Bundle args = new Bundle();
         args.putStringArrayList("user_image", user_image);
         args.putString("nickname", nickname);
         args.putInt("age", age);
+        args.putInt("score", score);
         args.putString("department", department);
         args.putInt("location", location);
         args.putString("mbti", mbti);
@@ -94,6 +103,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         args.putString("smoke", smoke);
         args.putString("drink", drink);
         args.putInt("height", height);
+        args.putString("feedUid", feedUid);
         fragment.setArguments(args);
         return fragment;
     }
@@ -119,7 +129,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         getBeforeData.enqueue(new Callback<UserData>() {
             @Override
             public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
-                Log.d(TAG,"getFeedContentData nickname = "+nickname);
+                Log.d(TAG,"getFeedContentData nickname = "+feedUid);
 
                 UserData userData = response.body();
                 if(userData != null) {
@@ -127,7 +137,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
                     Log.d(TAG,"getFeedContentData compare start");
 
-                    if (!pick_person.contains(nickname)) {
+                    if (!pick_person.contains(feedUid)) {
                         Log.d(TAG,"pick_person not contain nickname");
                         iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked);
                     } else {
@@ -148,6 +158,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         user_image = getArguments().getStringArrayList("user_image");
         nickname = getArguments().getString("nickname");
         age = getArguments().getInt("age");
+        score = getArguments().getInt("score");
         department = getArguments().getString("department");
         location = getArguments().getInt("location");
         mbti = getArguments().getString("mbti");
@@ -156,11 +167,13 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
         smoke = getArguments().getString("smoke");
         drink = getArguments().getString("drink");
         height = getArguments().getInt("height");
+        feedUid = getArguments().getString("feedUid");
 
         feedContentDto = FeedContentDto.builder()
                 .user_image(user_image)
                 .nickname(nickname)
                 .age(age)
+                .score(score)
                 .department(department)
                 .location(location)
                 .mbti(mbti)
@@ -175,10 +188,12 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
          * 이미지는 이 자리에 Glide 이용해서 링크 달아서 넣어주면 됨
          */
 
-        iv_profile.setImageResource(R.drawable.img_maenji);
+        Log.d(TAG, "이미지 url = " + user_image.get(0));
+        Glide.with(getContext()).load(user_image.get(0)).override(1200,1700).into(iv_profile);
+//        iv_profile.setImageResource(R.drawable.img_maenji);
         tv_name.setText(feedContentDto.getNickname());
         tv_age.setText(String.valueOf(feedContentDto.getAge()));
-
+        tv_score.setText(String.valueOf(feedContentDto.getScore()));
         tv_personality1.setText(feedContentDto.getPersonality().get(0));
         tv_personality2.setText(feedContentDto.getPersonality().get(1));
         tv_personality3.setText(feedContentDto.getPersonality().get(2));
@@ -207,7 +222,7 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
     public void moveActivity(Activity activity) {
         Intent intent = new Intent(getContext(), activity.getClass());
         intent.putExtra("feedContentDto", feedContentDto);
-
+        intent.putExtra("feedUid", feedUid);
         intent.putExtra("u_id", u_id);
         startActivity(intent);
     }
@@ -227,6 +242,8 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
 
     // 찜 목록에 추가하는 메소
     public void addUserIntoWishList(View view) {
+        wishAdapter = new WishAdapter();
+
         iv_likeButton = view.findViewById(R.id.iv_likeButton);
         iv_likeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -240,16 +257,21 @@ public class FeedContentFragment extends Fragment implements FeedContract.View {
                         UserData userData = response.body();
                         if(userData != null) {
                             ArrayList<String> pick_person = userData.getPick_person();
-
-                            if (!pick_person.contains(nickname)) {
-                                pick_person.add(nickname);
+                            Log.d(TAG, "테스트 ="+pick_person.toString());
+                            if (!pick_person.contains(feedUid)) {
+                                pick_person.add(feedUid);
+                                wishAdapter.addWishUserId(feedUid);
                                 iv_likeButton.setImageResource(R.drawable.ic_wish_clicked);
+
                             } else {
-                                pick_person.remove(nickname);
+                                pick_person.remove(feedUid);
+                                wishAdapter.removeWishUserId(feedUid);
                                 iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked);
+                                Log.d(TAG, "wishAdapter remove notify");
+
                             }
 
-                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);
+                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate(u_id, pick_person);
                             patchAfterData.enqueue(new Callback<UserData>() {
                                 @Override
                                 public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {

@@ -11,7 +11,7 @@ public class WishSubscriber<String> implements Emitter<String> {
     @Override
     public void onNext(String string) {
         System.out.println(Thread.currentThread().getName() + " onNext( " + string + " )");
-        wishAdapter.addWishUserImage((java.lang.String) string);
+//        wishAdapter.addWishUserImage((java.lang.String) string);
     }
 
 

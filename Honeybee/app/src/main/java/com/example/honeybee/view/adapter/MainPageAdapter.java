@@ -56,5 +56,6 @@ public class MainPageAdapter extends FragmentStateAdapter {
     public void addItem(Fragment fragment) {
         Log.d(TAG, "addItem() 호출" + fragment.toString());
         list.add(fragment);
+        notifyDataSetChanged();
     }
 }

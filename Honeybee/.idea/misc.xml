@@ -34,6 +34,8 @@
         <entry key="app/src/main/res/layout/test_test.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/wish_list_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.3890625" />
+        <entry key="app/src/main/res/menu/menu_selector_color.xml" value="0.26458333333333334" />
+        <entry key="app/src/main/res/menu/register_nav_menu.xml" value="0.9" />
       </map>
     </option>
   </component>

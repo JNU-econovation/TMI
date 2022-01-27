@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="비동기" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="FeedContent" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -15,8 +15,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/AiRequestData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/AiResponseData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/UserData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/dto/FeedContentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/model/dto/FeedContentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/WishSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/WishSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/activity/DetailFeedContentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/activity/DetailFeedContentActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/adapter/MainPageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/adapter/MainPageAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/adapter/WishAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/adapter/WishAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/EmailFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/EmailFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/FeedContentFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/FeedContentFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/FeedFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/FeedFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/WishFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/WishFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/color/bottom_menu_color.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/color/bottom_menu_color.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/wish_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/wish_list_item.xml" afterDir="false" />
     </list>
     <disabled>
       <disabled_changelists>
@@ -120,8 +137,8 @@
         <option value="Interface" />
         <option value="AnnotationType" />
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
         <option value="Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -358,7 +375,6 @@
       <option name="project" value="LOCAL" />
       <updated>1642848773216</updated>
     </task>
-
     <task id="LOCAL-00014" summary="refactor: Build failed fixed">
       <created>1642861539015</created>
       <option name="number" value="00014" />
@@ -380,7 +396,21 @@
       <option name="project" value="LOCAL" />
       <updated>1643024618774</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="refactor: RetrofitService.class 미사용 메소드 삭제">
+      <created>1643030644161</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1643030644161</updated>
+    </task>
+    <task id="LOCAL-00018" summary="refactor: 구조생성용 테스트 클래스 제거">
+      <created>1643094399795</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1643094399796</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

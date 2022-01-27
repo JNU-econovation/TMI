@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.honeybee.R;
 import com.example.honeybee.model.UserData;
 import com.example.honeybee.model.dto.FeedContentDto;
@@ -58,7 +59,8 @@ public class DetailFeedContentActivity extends AppCompatActivity {
     private String drink;
     private Integer height;
 
-    private String u_id;
+    private String feedUid;
+    private String u_id="120";
 
 
     @Override
@@ -74,7 +76,7 @@ public class DetailFeedContentActivity extends AppCompatActivity {
                 UserData userData = response.body();
                 if (userData != null) {
                     ArrayList<String> pick_person = userData.getPick_person();
-                    if (!pick_person.contains(nickname)) {
+                    if (!pick_person.contains(feedUid)) {
                         iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked_detail);
                     } else {
                         iv_likeButton.setImageResource(R.drawable.ic_wish_clicked_detail);
@@ -84,7 +86,7 @@ public class DetailFeedContentActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<UserData> call, @NonNull Throwable t) {
-                Log.d(TAG, t.getMessage());
+                Log.d(TAG, "onResume() 에러메시지 : " + t.getMessage());
             }
         });
     }
@@ -113,15 +115,15 @@ public class DetailFeedContentActivity extends AppCompatActivity {
                         if(userData != null) {
                             ArrayList<String> pick_person = userData.getPick_person();
 
-                            if (!pick_person.contains(nickname)) {
-                                pick_person.add(nickname);
+                            if (!pick_person.contains(feedUid)) {
+                                pick_person.add(feedUid);
                                 iv_likeButton.setImageResource(R.drawable.ic_wish_clicked_detail);
                             } else {
-                                pick_person.remove(nickname);
+                                pick_person.remove(feedUid);
                                 iv_likeButton.setImageResource(R.drawable.ic_wish_unclicked_detail);
                             }
 
-                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate("김현지", pick_person);
+                            Call<UserData> patchAfterData = NetRetrofit.getInstance().getRetrofitService().userDataUpdate(u_id, pick_person);
                             patchAfterData.enqueue(new Callback<UserData>() {
                                 @Override
                                 public void onResponse(@NonNull Call<UserData> call, @NonNull Response<UserData> response) {
@@ -184,7 +186,7 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         drink = feedContentDto.getDrink();
         height = feedContentDto.getHeight();
 
-        u_id = intent.getStringExtra("u_id");
+        feedUid = intent.getStringExtra("feedUid");
 
     }
 
@@ -192,9 +194,8 @@ public class DetailFeedContentActivity extends AppCompatActivity {
         /**
          * 이미지는 이 자리에 Glide로 처리해주면 됨
          */
-//        Glide.with(getBaseContext()).load(profileUrl).into(iv_profile);
-        iv_profile.setImageResource(R.drawable.img_maenji);
-
+        Glide.with(getBaseContext()).load(user_image.get(0)).into(iv_profile);
+//        iv_profile.setImageResource(R.drawable.img_maenji);
         tv_name.setText(nickname);
         tv_age.setText(String.valueOf(age));
         tv_college.setText(department);

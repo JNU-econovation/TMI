@@ -39,7 +39,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         feedFragment = FeedFragment.newInstance();
-        activateBottomNavigationView();
+        wishFragment = WishFragment.newInstance();
+        chatFragment = ChatFragment.newInstance();
+        profileFragment = ProfileFragment.newInstance();
+        activeBottomNav();
+//        activateBottomNavigationView();
+    }
+
+    private void activeBottomNav() {
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new FeedFragment()).commit();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.tab_home:
+                        Log.d(TAG, "tab_home clicked");
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, feedFragment).commit();
+                        return true;
+                    case R.id.tab_wish:
+                        Log.d(TAG, "tab_wish clicked");
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, wishFragment).commit();
+                        return true;
+                    case R.id.tab_chat:
+                        Log.d(TAG, "tab_chat clicked");
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, chatFragment).commit();
+                        return true;
+                    case R.id.tab_profile:
+                        Log.d(TAG, "tab_profile clicked");
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+        });
     }
 
     private void activateBottomNavigationView() {
@@ -55,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.tab_home:
                         Log.d(TAG, "tab_home clicked");
+
 
                         if (feedFragment == null) {
                             getSupportFragmentManager()

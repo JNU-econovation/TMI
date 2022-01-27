@@ -38,7 +38,7 @@ import retrofit2.Response;
 
 public class WishFragment extends Fragment {
     private static final String TAG = "WishFragment.class";
-    private String u_id = "김현지";
+    private String u_id = "120";
 
     private RecyclerView recyclerView;
     private WishAdapter wishAdapter;
@@ -63,6 +63,7 @@ public class WishFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume() 호출");
     }
 
     @Override
@@ -72,7 +73,6 @@ public class WishFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_wish, container, false);
         init(view);
         getWishList();
-
         recyclerView.setAdapter(wishAdapter);
         return view;
     }
@@ -123,7 +123,7 @@ public class WishFragment extends Fragment {
                                     public void onNext(@NonNull String userImage) {
                                         Log.d(TAG, "onNext() item =" + userImage);
                                         wishAdapter.addWishUserId(pickPerson);
-                                        wishAdapter.addWishUserImage(userImage);
+//                                        wishAdapter.addWishUserImage(userImage);
                                     }
 
                                     @Override
