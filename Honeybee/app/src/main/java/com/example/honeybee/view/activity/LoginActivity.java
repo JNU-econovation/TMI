@@ -10,14 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.honeybee.R;
 import com.example.honeybee.contract.RetrofitService;
 import com.example.honeybee.model.dto.LoginData;
-import com.example.honeybee.utilService.SharedPreferencesClass;
 import com.example.honeybee.view.NetRetrofit;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText id;
     private EditText pw;
     private Button loginButton;
+    private TextView registerButton;
     private String uid, password;   // 서버와 동일해야하는 변수이
 
     @Override
@@ -41,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         id = (EditText) findViewById(R.id.login_id);
         pw = (EditText) findViewById(R.id.login_pw);
         loginButton = (Button) findViewById(R.id.loginButton);
+        registerButton = (TextView) findViewById(R.id.registerButton);
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

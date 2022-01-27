@@ -1,50 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp">
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="인증번호 입력"
+        android:text="프로필 이미지 등록"
         android:textSize="36dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/email_format">
-    </TextView>
+        app:layout_constraintTop_toTopOf="parent"></TextView>
 
-    <LinearLayout
-        android:id="@+id/email_format"
+    <TextView
+        android:id="@+id/login_info_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="250dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/authBtn"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="사용자의 프로필 이미지를 등록합니다."
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
-
-        <EditText
-            android:id="@+id/authNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"></EditText>
-    </LinearLayout>
-
+        app:layout_constraintTop_toBottomOf="@id/title">
+    </TextView>
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="#e8e8e8"
+        app:layout_constraintTop_toBottomOf="@id/login_info_text">
+    </ImageView>
     <Button
-        android:id="@+id/authBtn"
+        android:id="@+id/nextBtn"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="인증하기"
+        android:backgroundTint="@color/main"
+        android:text="다음으로"
         android:textFontWeight="700"
         android:textSize="20dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/main"
         app:layout_constraintBottom_toBottomOf="parent"
-        ></Button>
-
-
+        tools:ignore="MissingConstraints"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

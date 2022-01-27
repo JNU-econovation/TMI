@@ -63,7 +63,11 @@ public class EmailFragment extends Fragment {
                 System.out.println("authenticationkey는 "+authKey);
                 try {
                     // gmailSender.sendMail("인증 번호", AuthenticationKey, "wnajsldkf@naver.com");
-                    MailSender(studentNumber.getText().toString(), authKey);
+
+                    new Thread(()->{
+                        MailSender(studentNumber.getText().toString(), authKey);
+                    }).start();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -96,13 +100,13 @@ public class EmailFragment extends Fragment {
 
         // mail server 설정
         String host = "smtp.naver.com";
-        String user = "";
-        String password = "";
+        String user = "wnajsldkf";
+        String password = "whddnr1123!";
 
         // SMTP 서버 정보 설정
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
-        props.put("mail.smtp.port", 587);
+        props.put("mail.smtp.port", 465);
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.ssl.enable", "true");
 
@@ -116,7 +120,7 @@ public class EmailFragment extends Fragment {
         // 메일 전송
         try {
             MimeMessage msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(user, "HoneyBe"));
+            msg.setFrom(new InternetAddress(user, "honeybe"));
             msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to_email));
 
             // 메일 제목
@@ -130,5 +134,4 @@ public class EmailFragment extends Fragment {
             e.printStackTrace();
         }
     }
-
 }

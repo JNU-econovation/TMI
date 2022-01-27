@@ -3,29 +3,17 @@ package com.example.honeybee.view.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import android.net.TrafficStats;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
 
-import com.example.honeybee.BuildConfig;
 import com.example.honeybee.R;
-import com.example.honeybee.model.UserData;
-import com.example.honeybee.utilService.SharedPreferencesClass;
-import com.example.honeybee.view.NetRetrofit;
 import com.example.honeybee.view.fragment.ChatFragment;
 import com.example.honeybee.view.fragment.FeedFragment;
 import com.example.honeybee.view.fragment.ProfileFragment;
 import com.example.honeybee.view.fragment.WishFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private final String TAG = "MainActivity.class";
