@@ -15,8 +15,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec0e1d63-6ddc-49b4-816b-19d5b9f533ec" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/ImageFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/LoginInfoFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/UserInfoFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/view/fragment/UserMoreFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/gradient.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/large_button.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_image.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login_info.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_info.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_more.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/honeybee/contract/RetrofitService.java" afterDir="false" />
     </list>
     <disabled>
       <disabled_changelists>
@@ -79,7 +89,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/chaesang-yeob/.android/avd/Pixel_3a_API_31_arm64-v8a.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/mywnajsldkf/.android/avd/Pixel_3a_API_31.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -116,11 +126,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="valueResourceFile" />
         <option value="Interface" />
         <option value="AnnotationType" />
         <option value="layoutResourceFile" />
         <option value="resourceFile" />
+        <option value="valueResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -160,11 +170,11 @@
     <property name="android-custom-view/Users/chaesang-yeob/AndroidStudioProjects/TMI/TEST/Honeybee/app/src/main/java/com/example/honeybee/SquareLayout.java_SquareLayout_DIMENSIONS" value="1080&#10;1920" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="memory.settings.postsync.last.time.stamp" value="1635257268549" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1643059370688" />
     <property name="project.structure.last.edited" value="Dependencies" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="memory.settings" />
   </component>
   <component name="PsdUISettings">
     <option name="LAST_EDITED_BUILD_TYPE" value="release" />
@@ -186,6 +196,9 @@
     </key>
     <key name="android.template.-53579312">
       <recent name="com.example.honeybee.view" />
+    </key>
+    <key name="android.template.286779616">
+      <recent name="com.example.honeybee.view.activity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.honeybee.presenter" />
@@ -281,12 +294,12 @@
       <option name="project" value="LOCAL" />
       <updated>1642143673451</updated>
     </task>
-    <task id="LOCAL-00003" summary="feat: GetMapping, PostMapping Test Code Added">
-      <created>1642160770799</created>
+    <task id="LOCAL-00003" summary="add: directory struct">
+      <created>1642847392418</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1642160770799</updated>
+      <updated>1642847392418</updated>
     </task>
     <task id="LOCAL-00004" summary="feat: call data to feed from mongodb">
       <created>1642388079955</created>
@@ -358,29 +371,6 @@
       <option name="project" value="LOCAL" />
       <updated>1642848773216</updated>
     </task>
-
-    <task id="LOCAL-00014" summary="refactor: Build failed fixed">
-      <created>1642861539015</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1642861539017</updated>
-    </task>
-    <task id="LOCAL-00015" summary="refactor: wish list 순서보장문제 임시해결(Thread sleep)">
-      <created>1642995484387</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1642995484387</updated>
-    </task>
-    <task id="LOCAL-00016" summary="refactor: feedContentDto 필드 완전구성">
-      <created>1643024618773</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1643024618774</updated>
-    </task>
-    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

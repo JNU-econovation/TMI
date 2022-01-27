@@ -62,14 +62,15 @@ dependencies {
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0-beta03'
 
+    implementation 'com.amazonaws:aws-android-sdk-mobile-client:2.13.5'
+    implementation 'com.amazonaws:aws-android-sdk-cognito:2.13.5'
+    implementation 'com.amazonaws:aws-android-sdk-s3:2.13.5'
+
     //rxjava
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     // Because RxAndroid releases are few and far between, it is recommended you also
     // explicitly depend on RxJava's latest version for bug fixes and new features.
     // (see https://github.com/ReactiveX/RxJava/releases for latest 3.x.x version)
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
-
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-
-
 }

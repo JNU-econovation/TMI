@@ -65,16 +65,17 @@
             android:orientation="vertical"
             android:layout_marginTop="10dp"
             app:layout_constraintBottom_toBottomOf="parent">
+
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
-                android:textSize="20dp"
                 android:text="로그인하기"
-                android:textFontWeight="700">
-            </Button>
+                android:textFontWeight="700"
+                android:textSize="20dp"
+                android:backgroundTint="@color/main"></Button>
 
-            <Button
+            <TextView
                 android:id="@+id/registerButton"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -82,7 +83,23 @@
                 android:onClick="registerClicked"
                 android:text="아직 회원이 아니신가요?"
                 android:textFontWeight="700"
-                android:textSize="16dp"></Button>
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/textColor">
+            </TextView>
+
+            <!--Button
+                android:id="@+id/registerButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="4dp"
+                android:onClick="registerClicked"
+                android:text="아직 회원이 아니신가요?"
+                android:textFontWeight="700"
+                android:textSize="16dp"
+                android:textColor="@color/textColor"
+                android:backgroundTint="#FFFFFF"></Button-->
         </LinearLayout>
 
     </LinearLayout>
