@@ -6,6 +6,7 @@
 <h5 align="center"> MBTI와 자신의 취미, 관심사를 토대로 이상형을 추천하는 소개팅 어플리케이션 </h3>
 <h5 align="center"> <a href="https://youtu.be/irk_4d08TWg?t=8095">2022 ECONOVATION WINTER DEV.</a> </h5>
 
+![TMI](https://user-images.githubusercontent.com/81462087/159382265-ebdc6895-80fa-4a8d-9e0d-4d93dc2ceb7f.jpeg)
 <p align="center"> 
 ![TMI](https://user-images.githubusercontent.com/81462087/159382265-ebdc6895-80fa-4a8d-9e0d-4d93dc2ceb7f.jpeg)
 </p>
