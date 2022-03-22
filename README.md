@@ -1,5 +1,5 @@
 <p align="center"> 
-  <alt="Honey BE" width="80px" height="80px">
+  <alt="HoneyBE" width="80px" height="80px">
 </p>
 <h1 align="center"> Honey BE</h1>
 <h3 align="center"> 전남대학교 IT 개발 동아리 ECONOVATION TMI팀 </h3>
