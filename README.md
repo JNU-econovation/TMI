@@ -7,7 +7,7 @@
 <h5 align="center"> <a href="https://youtu.be/irk_4d08TWg?t=8095">2022 ECONOVATION WINTER DEV.</a> </h5>
 
 <p align="center"> 
-  <img src="TMI.jpeg" alt="TMI" height="350px" width="637">
+![TMI](https://user-images.githubusercontent.com/81462087/159382265-ebdc6895-80fa-4a8d-9e0d-4d93dc2ceb7f.jpeg)
 </p>
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
