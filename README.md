@@ -34,5 +34,6 @@ Android Studio와 SpringBoot간 통신을 위하여 Http 통신 라이브러리 
   
 <h4 id="AI"> AI </h4>
 <p align="justify"> 
-딥러닝 기반의 추천 시스템을 개발하였습니다. 콜드 스타트 문제를 해결하기 위해 외부 데이터를 사용한 비지도 학습을 사용하였습니다. 모델 배포를 위해 Amazon Web Service (AWS)를 사용하였습니다.
+딥러닝 기반의 추천 시스템을 개발하였습니다. 콜드 스타트 문제를 해결하기 위해 외부 데이터(OKCupid Dataset)를 사용하였고 추천 시스템을 만들기 위해 비지도 학습을 사용하였습니다.
+모델 배포를 위해 Amazon Web Service (AWS)를 사용하였습니다.
 </p>
