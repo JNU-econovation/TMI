@@ -21,7 +21,7 @@ HoneyBe는 취미, 관심사를 기반으로 한 소개팅 어플리케이션입
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-<h2 id="Built with"> Built with </h2>
+<h2 id="Tech Stack"> Tech Stack </h2>
 
 <p align="center"> 
   <img src="https://user-images.githubusercontent.com/81462087/159383411-b46b7fc4-8b70-477f-bd02-7f41fae05631.png" alt="built with" height="380px" width="637">
